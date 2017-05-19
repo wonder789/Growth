@@ -1,0 +1,112 @@
+@font-face{
+	font-family:NanumGothic;
+	src:url(../fonts/NanumGothic.eot);
+	src:local(※), url(../fonts/NanumGothic.woff) format(‘woff’)
+}
+
+body{
+	padding-top:55px;
+	font-family : 'NanumGothic';
+}
+
+#logo{
+    background-image: url(../img/logo_default.png);
+    background-repeat: no-repeat;
+    padding-left: 40px;
+    background-position-y: 14px;
+	
+}
+#logo:hover{
+	background-image:url(../img/logo_hover.png);
+	
+}
+.section{
+	margin-top:50px;
+	
+}
+.carousel{
+	height:400px;
+}
+/* Carousel base class */
+.carousel {
+  height: 400px;
+  margin-bottom: 20px;
+}
+/* Since positioning the image, we need to help out the caption */
+.carousel-caption {
+  z-index: 10;
+}
+
+/* Declare heights because of positioning of img element */
+.carousel .item {
+  height: 400px;
+  background-color: #777;
+}
+.carousel-inner > .item > img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  min-width: 100%;
+  height: 400px;
+}
+
+.writer .img{
+	width:20px;
+	height:20px;
+	display:inline-block;
+	margin-right:10px;
+}
+
+footer{
+	height: 200px;
+	background: #EEE;
+	margin-top: 70px;
+}	
+
+section{
+	overflow:hidden;
+}
+section .page-header{
+	margin : 40px 0 20px 0;
+}
+
+.section-header{
+	background-color: #5D81A3;
+	color: white;
+	height: 65px;
+	margin-top: 30px;
+	overflow:hidden;
+}
+
+.section-icon{
+	width: 80px;
+	height: 65px;
+	float: left;
+	background: #4A6986;
+}
+
+.section-header .section-title{
+	margin: 15px 0;
+	float: left;
+	margin-left: 20px;
+}
+
+.section-body{
+	margin-top:30px;
+}
+
+.no-board-message{
+	text-align:center;
+	font-weight:bold;
+	font-size:20px;
+}
+
+.link-list-wrap{
+	width: 100%;
+	height: 400px;
+}
+
+.post-thumbnail{
+	width:80px;
+	height:80px;
+}
