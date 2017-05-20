@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.growth.fileMapper">
+	
+	<insert id="insertFile" parameterType="fileVO" >
+		INSERT INTO FILE
+		(
+			FILE_ID,
+			FILE_NAME_ORG,
+			FILE_DATA,
+			REG_DATE,
+			MOD_DATE
+		)
+		VALUES
+		(
+			 #{fileId},
+			 #{fileNameOrg},
+			 #{fileData},
+			 now(),
+			 now()
+		 )
+		<selectKey resultType="int" keyProperty="fileId">
+			 SELECT LAST_INSERT_ID()
+		</selectKey>
+	</insert>
+
+	
+</mapper>

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.growth.userMapper">
+    <select id="getCurrentDateTime" resultType="String">
+      SELECT Now() from dual
+    </select>
+    
+    <insert id="insertUser" parameterType="userVO" >
+    	INSERT INTO `growth`.`users`
+		(
+			`email`,
+			`password`,
+			`department`,
+			`grade`,
+			`name`,
+			`photo`,
+			`type`,
+			`auth`,
+			`reg_date`,
+			`mod_date`
+		)
+		VALUES
+		(
+			#{email},
+			#{password},
+			#{department},
+			#{grade},
+			#{name},
+			#{photo},
+			#{type},
+			#{auth},
+			now(),
+			now()
+		)
+    </insert>
+    
+    
+    <select id="findUser" parameterType="userVO" resultType="userVO">
+    	SELECT EMAIL,
+    		   PASSWORD,
+    		   DEPARTMENT,
+    		   GRADE,
+    		   NAME,
+    		   PHOTO,
+    		   TYPE,
+    		   AUTH,
+    		   REG_DATE,
+    		   MOD_DATE
+    	FROM USERS
+    	WHERE 1=1
+    	<if test="email != null">
+    		AND EMAIL = #{email}
+    	</if>
+    </select>
+    
+</mapper>
+

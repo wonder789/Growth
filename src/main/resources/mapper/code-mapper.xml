@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.growth.codeMapper">
+	
+
+	<select id="selectCodeByPcode" resultType="codeVO" parameterType="String" >
+		SELECT CODE,
+		    P_CODE,
+		    CODE_NM,
+		    CODE_COMMENT1,
+		    CODE_COMMENT2,
+		    CODE_COMMENT3,
+		    REG_DATE,
+		    MOD_DATE
+		FROM CODE
+		WHERE 1=1
+		<if test="_parameter != null">
+			AND P_CODE = #{pCode}
+		</if>
+ 	</select>
+</mapper>
