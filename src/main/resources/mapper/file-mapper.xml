@@ -3,6 +3,10 @@
 
 <mapper namespace="com.growth.fileMapper">
 	
+	<resultMap id="responseMap" type="fileVO">
+	      <result property="fileData" javaType="_byte[]" column="file_data" jdbcType="BLOB"/>
+	</resultMap>
+	
 	<insert id="insertFile" parameterType="fileVO" >
 		INSERT INTO FILE
 		(
@@ -24,6 +28,12 @@
 			 SELECT LAST_INSERT_ID()
 		</selectKey>
 	</insert>
+	
+	<select id="selectFileBlobData" parameterType="string" resultMap="responseMap">
+		SELECT FILE_DATA
+			FROM FILE
+		WHERE FILE_ID = #{id}
+	</select>
 
 	
 </mapper>

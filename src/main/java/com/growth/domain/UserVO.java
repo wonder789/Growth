@@ -1,10 +1,15 @@
 package com.growth.domain;
 
+import java.util.Collection;
+
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.AuthorityUtils;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-public class UserVO {
+public class UserVO implements UserDetails{
 	private String email;
 	
 	private String password;
@@ -201,6 +206,42 @@ public class UserVO {
 				return false;
 		} else if (!type.equals(other.type))
 			return false;
+		return true;
+	}
+
+	@Override
+	public Collection<? extends GrantedAuthority> getAuthorities() {
+		// TODO Auto-generated method stub
+		return AuthorityUtils.createAuthorityList(auth);
+	}
+
+	@Override
+	public String getUsername() {
+		// TODO Auto-generated method stub
+		return name;
+	}
+
+	@Override
+	public boolean isAccountNonExpired() {
+		// TODO Auto-generated method stub
+		return true;
+	}
+
+	@Override
+	public boolean isAccountNonLocked() {
+		// TODO Auto-generated method stub
+		return true;
+	}
+
+	@Override
+	public boolean isCredentialsNonExpired() {
+		// TODO Auto-generated method stub
+		return true;
+	}
+
+	@Override
+	public boolean isEnabled() {
+		// TODO Auto-generated method stub
 		return true;
 	}
 	

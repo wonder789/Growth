@@ -17,5 +17,9 @@ public class FileDao {
 		sqlSession.insert("com.growth.fileMapper.insertFile",fileVO);
 		return fileVO.getFileId();
 	}
+	
+	public FileVO selectFileBlobData(String fileId) throws Exception{
+		return (FileVO) sqlSession.selectOne("com.growth.fileMapper.selectFileBlobData",fileId);
+	}
 
 }

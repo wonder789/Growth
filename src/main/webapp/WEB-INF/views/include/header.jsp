@@ -18,8 +18,17 @@
 			<li><a href="news.html">뉴스</a></li>
 			<li><a href="consult.html">질의응답</a></li>
 			<li><a href="notice.html">공지사항</a></li>
-			<li><a href="login.html">로그인</a></li>
-			<li><a href="/signupPage.do">회원가입</a></li>
+			<sec:authorize access="isAnonymous()">
+				<li><a href="/auth/loginPage.do">로그인</a></li>
+				<li><a href="/auth/signupPage.do">회원가입</a></li>	
+			</sec:authorize>
+			<sec:authorize access="isAuthenticated()">
+				<li><a href="/auth/mypage.do">
+					<img class="circular-square user-image" 
+						 src="${pageContext.request.contextPath}/image.do?id=<sec:authentication property='principal.photo'/>" 
+				/><sec:authentication property="principal.name"/></a></li>
+				<li><a href="/auth/logout.do">로그아웃</a></li>
+			</sec:authorize>
 		  </ul>
 		</div><!--/.nav-collapse -->
 	  </div>

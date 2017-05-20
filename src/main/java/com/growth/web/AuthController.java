@@ -1,6 +1,10 @@
 package com.growth.web;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,7 +26,7 @@ public class AuthController {
 	private UserService userService;
 	
 	
-	@RequestMapping(value="/signupPage.do")
+	@RequestMapping(value="/auth/signupPage.do")
 	public String signupPage(ModelMap model) throws Exception{
 		
 		model.addAttribute("gradeCodeList", codeService.selectCodeByPcode("UG01"));
@@ -31,14 +35,16 @@ public class AuthController {
 		return "auth/signupPage";
 	}
 	
-	@RequestMapping(value="/loginPage.do")
+	@RequestMapping(value="/auth/loginPage.do")
 	public String loginPage(ModelMap model) throws Exception{
 		
 		return "auth/loginPage";
 	}
 	
 	
-	@RequestMapping(value="/signup.do", method = RequestMethod.POST)
+	
+	@RequestMapping(value="/auth/signup.do", method = RequestMethod.POST)
+	@ResponseBody
 	public AjaxResult signup(UserVO userVO, ModelMap model) throws Exception{
 		AjaxResult result = new AjaxResult();
 		UserVO searchUser = userService.findUser(userVO);
@@ -50,6 +56,8 @@ public class AuthController {
 			//ajax 요청이라 따로 예외처리안할시 클라이언트 반응안함
 			try{
 				userService.userSignup(userVO);
+				result.setStatus(AjaxResult.SUCCESS)
+					  .setMessage("회원가입이 완료되었습니다.");
 			} catch ( Exception e ){
 				result.setStatus(AjaxResult.EXCEPTION)
 				   .setMessage(e.getMessage());

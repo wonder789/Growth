@@ -32,7 +32,7 @@
 		var formData = new FormData(form);
 		
 		$.ajax({
-			url : "/signup.do",
+			url : "${pageContext.request.contextPath}/auth/signup.do",
 			type : "POST",
 			data : formData,
 			async : false,
@@ -41,8 +41,8 @@
 			processData : false,
 			success : function(result){
 				if( result.status == 200 ){
-					alert("회원가입이 완료되었습니다.");		
-					location.href="loginPage.do";
+					alert(result.message);		
+					location.href="${pageContext.request.contextPath}/auth/loginPage.do";
 				} else if ( result.status == 400 ){
 					alert(result.message);
 				} else if( result.status == 500 ){
@@ -154,7 +154,7 @@
 	<section class="section" id="signup">
 		<div class="row">
 			<div class="col-md-6 col-md-pull-3 col-md-push-3 col-sm-8 col-sm-pull-2 col-sm-push-2">
-				<form class="form-horizontal well" action="/auth/signup" method="POST" id="signup-form">
+				<form class="form-horizontal well" id="signup-form">
 				  <div class="form-header">
 				  	<h4 class="logo-header text-center">Growth</h4>
 				  </div>
@@ -243,7 +243,7 @@
 				  </div>
 				  <div class="form-group">
 				    <p class="text-center">
-				    	<input type="button" class="btn btn-primary" id="signup-btn" value="회원가입" />
+				    	<input type="button" class="btn btn-danger" id="signup-btn" value="회원가입" />
 				    </p>
 				  </div>
 			</form>

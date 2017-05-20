@@ -29,7 +29,7 @@
 			#{name},
 			#{photo},
 			#{type},
-			#{auth},
+			'ROLE_USER',
 			now(),
 			now()
 		)

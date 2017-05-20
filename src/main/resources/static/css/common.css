@@ -114,6 +114,17 @@ section .page-header{
 	width:80px;
 	height:80px;
 }
+.user-image{
+	width:24px;
+	height:24px;
+	margin-right:5px;
+}
+.circular-square {
+  border-top-left-radius: 50% 50%;
+  border-top-right-radius: 50% 50%;
+  border-bottom-right-radius: 50% 50%;
+  border-bottom-left-radius: 50% 50%;
+}
 
 .input-wrap{
 	position:relative;

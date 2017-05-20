@@ -11,13 +11,13 @@
  <title>Growth</title>
 
  <!-- Bootstrap core CSS -->
- <link href="css/bootstrap.min.css" rel="stylesheet">
+ <link href="${pageContext.request.contextPath}/css/bootstrap.min.css" rel="stylesheet">
  <!-- Bootstrap theme -->
-   <link href="css/bootflat.css" rel="stylesheet">
+   <link href="${pageContext.request.contextPath}/css/bootflat.css" rel="stylesheet">
    
-   <link href="css/bootstrap-theme.css" rel="stylesheet">
+   <link href="${pageContext.request.contextPath}/css/bootstrap-theme.css" rel="stylesheet">
    
-<link href="css/common.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath}/css/common.css" rel="stylesheet">
    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
  <!--[if lt IE 9]>
    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
@@ -25,10 +25,9 @@
  <![endif]-->
  
  	
-	
-<script src="js/jquery-1.10.1.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<script src="js/icheck.min.js"></script>
-<script src="js/jquery.fs.selecter.min.js"></script>
-<script src="js/jquery.fs.stepper.min.js"></script>
-<script src="js/validate.js"></script>
+<script src="${pageContext.request.contextPath}/js/jquery-1.10.1.min.js"></script>
+<script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
+<script src="${pageContext.request.contextPath}/js/icheck.min.js"></script>
+<script src="${pageContext.request.contextPath}/js/jquery.fs.selecter.min.js"></script>
+<script src="${pageContext.request.contextPath}/js/jquery.fs.stepper.min.js"></script>
+<script src="${pageContext.request.contextPath}/js/validate.js"></script>
