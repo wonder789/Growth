@@ -9,14 +9,18 @@ body{
 	font-family : 'NanumGothic';
 }
 
-#logo{
+.logo, .logo-header{
     background-image: url(../img/logo_default.png);
     background-repeat: no-repeat;
     padding-left: 40px;
     background-position-y: 14px;
-	
 }
-#logo:hover{
+.logo-header{
+	background-position-x:43%;
+	background-position-y:0;
+	margin: 25px 0;
+}
+.logo:hover{
 	background-image:url(../img/logo_hover.png);
 	
 }
@@ -109,4 +113,21 @@ section .page-header{
 .post-thumbnail{
 	width:80px;
 	height:80px;
+}
+
+.input-wrap{
+	position:relative;
+}
+.input-wrap .glyphicon,
+.input-wrap .control-label{
+	display:none;
+}
+
+.form-group.has-error .input-wrap .glyphicon,
+.form-group.has-error .input-wrap .control-label{
+	display:initial;
+}
+
+.none-i{
+	display:none !important;
 }

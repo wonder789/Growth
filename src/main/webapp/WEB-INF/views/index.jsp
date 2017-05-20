@@ -1,5 +1,13 @@
 <%@ page pageEncoding="utf-8"%>
-<%@ include file="include/header.jsp" %>
+<%@ include file="include/jstlTag.jsp" %>
+<!DOCTYPE html>
+<html>
+<head>
+<%@ include file="include/headTag.jsp" %>
+</head>
+<body>
+	<%@ include file="include/header.jsp" %>
+	
 				<!-- Carousel
 		================================================== -->
 			<div class="row">
