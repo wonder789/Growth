@@ -103,26 +103,99 @@
  	</select>
  	
  	<select id="selectPostOne" resultType="postVO" parameterType="postVO">
- 			SELECT A.POST_ID,
-				   A.TITLE,
-				   A.CONTENT,
-			       fnStripTags(A.CONTENT) PLAIN_CONTENT,
-			       A.WRITER_ID,
-			       B.DEPARTMENT,
-			       concat(fnGetCodeNm(B.GRADE), " " , B.NAME ) name,
-			       b.PHOTO PHOTO,
-			       A.HIT_CNT,
-			       A.LIKE_CNT,
-			       A.REG_DATE,
-			       A.MOD_DATE,
-			       A.THUMBNAIL,
-			       ( SELECT COUNT(1)
-						FROM POST_COMMENT D
-			            WHERE D.POST_ID = A.POST_ID) COMMENT_CNT
-			FROM POST A
-			INNER JOIN USERS B 
-			ON A.WRITER_ID = B.EMAIL
-			WHERE POST_ID = #{postId}
+		SELECT A.POST_ID,
+			   A.TITLE,
+			   A.CONTENT,
+		       fnStripTags(A.CONTENT) PLAIN_CONTENT,
+		       A.WRITER_ID,
+		       B.DEPARTMENT DEPARTMENT,
+		       concat(fnGetCodeNm(B.GRADE), " " , B.NAME ) name,
+		       b.PHOTO PHOTO,
+		       A.HIT_CNT,
+		       A.LIKE_CNT,
+		       A.REG_DATE,
+		       A.MOD_DATE,
+		       A.THUMBNAIL,
+		       (SELECT COUNT(1)
+					FROM POST_LIKE
+					WHERE USER_EMAIL = A.WRITER_ID
+					AND   POST_ID    = #{postId} ) LIKE_YN, 
+		       ( SELECT COUNT(1)
+					FROM POST_COMMENT D
+		            WHERE D.POST_ID = A.POST_ID) COMMENT_CNT
+		FROM POST A
+		INNER JOIN USERS B 
+		ON A.WRITER_ID = B.EMAIL
+		WHERE POST_ID = #{postId}
  	</select>
- 	
+	
+	<update id="updateHitCount" parameterType="postVO">
+		UPDATE POST SET HIT_CNT = HIT_CNT + 1 
+			WHERE POST_ID = #{postId}
+	</update> 	
+	
+	<update id="updateLikeCount" parameterType="postVO">
+		UPDATE POST SET LIKE_CNT = (
+				 SELECT COUNT(1) 
+				 FROM POST_LIKE
+				 WHERE POST_ID = #{postId}
+		  )
+		WHERE POST_ID = #{postId}
+	</update>
+	
+	<insert id="insertPostLike" parameterType="postVO">
+		INSERT INTO POST_LIKE(
+			USER_EMAIL,
+			POST_ID
+		) VALUES ( 
+			#{writerId},
+			#{postId}
+		)
+	</insert>
+	
+	<select id="selectPostLikeCnt" parameterType="postVO" resultType="int">
+		SELECT COUNT(1)
+		FROM POST_LIKE
+		WHERE USER_EMAIL = #{writerId}
+		AND   POST_ID    = #{postId} 
+	</select>
+	
+	<delete id="deletePostLike" parameterType="postVO">
+		DELETE FROM POST_LIKE
+		WHERE USER_EMAIL = #{writerId}
+		AND   POST_ID    = #{postId} 
+	</delete>
+	
+	
+	<select id="selectPostComments" parameterType="postVO" resultType="postVO">
+		SELECT A.POST_ID,
+		       A.COMMENT_ID,
+			   A.CONTENT,
+			  A.WRITER_ID,
+			  B.PHOTO PHOTO,
+			  CONCAT(fnGetCodeNm(B.GRADE)," ",B.NAME) NAME,
+			  A.REG_DATE,
+			  A.MOD_DATE
+		FROM POST_COMMENT A 
+			INNER JOIN USERS B
+		ON A.WRITER_ID = B.EMAIL
+		WHERE POST_ID = #{postId}
+		
+	</select>
+	<insert id="insertPostComment" parameterType="postVO" >
+		INSERT INTO POST_COMMENT(
+			POST_ID,
+			CONTENT,
+			WRITER_ID,
+			REG_DATE,
+			MOD_DATE
+		) VALUES (
+			#{postId},
+			#{content},
+			#{writerId},
+			now(),
+			now()
+		)
+	</insert>
+	
 </mapper>

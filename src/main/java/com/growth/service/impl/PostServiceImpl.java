@@ -81,6 +81,39 @@ public class PostServiceImpl implements PostService {
 		return postDao.selectPostOne(postVO);
 	}
 
+	@Override
+	public void updateHitCount(PostVO postVO) throws Exception {
+		postDao.updateHitCount(postVO);
+	}
+
+	@Override
+	public void updateLikeCount(PostVO postVO) throws Exception {
+		postDao.insertPostLike(postVO);
+		postDao.upateLikeCount(postVO);
+	}
+
+	@Override
+	public int selectPostLikeCnt(PostVO postVO) throws Exception {
+		return postDao.selectPostLikeCnt(postVO);
+	}
+
+	@Override
+	public void updateDislike(PostVO postVO) throws Exception {
+		postDao.deletePostLike(postVO);
+		postDao.upateLikeCount(postVO);
+	}
+
+	
+	@Override
+	public void insertPostComment(PostVO postVO) throws Exception {
+		postDao.insertPostComment(postVO);
+	}
+
+	@Override
+	public List<PostVO> selectPostComments(PostVO postVO) throws Exception {
+		return postDao.selectPostComments(postVO);
+	}
+
 	
 	
 	

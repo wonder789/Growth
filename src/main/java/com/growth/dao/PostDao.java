@@ -41,4 +41,33 @@ public class PostDao {
 	public PostVO selectPostOne(PostVO postVO) throws Exception{
 		return sqlSession.selectOne("com.growth.postMapper.selectPostOne",postVO);
 	}
+	
+	public void updateHitCount(PostVO postVO) throws Exception{
+		sqlSession.update("com.growth.postMapper.updateHitCount",postVO);
+	}
+	
+	public void upateLikeCount(PostVO postVO) throws Exception{
+		sqlSession.update("com.growth.postMapper.updateLikeCount", postVO);
+	}
+	
+	public void insertPostLike(PostVO postVO) throws Exception{
+		sqlSession.insert("com.growth.postMapper.insertPostLike", postVO);
+	}
+	
+	public int selectPostLikeCnt(PostVO postVO) throws Exception{
+		return (Integer)sqlSession.selectOne("com.growth.postMapper.selectPostLikeCnt", postVO);
+	}
+	
+	public void deletePostLike(PostVO postVO) throws Exception{
+		sqlSession.delete("com.growth.postMapper.deletePostLike", postVO); 
+	}
+	
+	public void insertPostComment(PostVO postVO) throws Exception{
+		sqlSession.insert("com.growth.postMapper.insertPostComment",postVO);
+	}
+	
+	public List<PostVO> selectPostComments(PostVO postVO) throws Exception{
+		return sqlSession.selectList("com.growth.postMapper.selectPostComments", postVO);
+	}
+	
 }

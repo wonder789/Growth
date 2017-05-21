@@ -46,13 +46,34 @@ public class PostVO implements Serializable{
 	
 	private int point;
 	
+	private String department;
+	
 	private String searchCondition;
 	
 	private String searchKeyword;
 	
+	private int likeYn;
+
 	
 	
 	
+	
+	public String getDepartment() {
+		return department;
+	}
+
+	public void setDepartment(String department) {
+		this.department = department;
+	}
+
+	public int getLikeYn() {
+		return likeYn;
+	}
+
+	public void setLikeYn(int likeYn) {
+		this.likeYn = likeYn;
+	}
+
 	public String getSearchKeyword() {
 		return searchKeyword;
 	}

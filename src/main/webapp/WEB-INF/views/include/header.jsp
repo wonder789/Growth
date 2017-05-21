@@ -17,7 +17,7 @@
 		  	<li <c:if test="${ currentPage eq 'post' }">class="active"</c:if> ><a href="${pageContext.request.contextPath}/post/postPage.do">
 		  			<i class="fa fa-bookmark" aria-hidden="true"></i>포스트</a></li>	
 			<li ><a href="news.html">뉴스</a></li>
-			<li><a href="consult.html">질의응답</a></li>
+			<li><a href="consult.html">고민상담</a></li>
 			<li><a href="notice.html">공지사항</a></li>
 			<sec:authorize access="isAnonymous()">
 				<li <c:if test="${ currentPage eq 'login' }">class="active"</c:if>><a href="${pageContext.request.contextPath}/auth/loginPage.do">로그인</a></li>
