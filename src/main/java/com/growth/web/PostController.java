@@ -29,14 +29,14 @@ public class PostController {
 	@RequestMapping(value="/post/postPage.do")
 	public String postPage(ModelMap model) throws Exception{
 		model.addAttribute("hashTagList", postService.selectPopularHashTag() );
-		
+		model.addAttribute("currentPage","post");
 		return "/post/postPage";
 	}
 
 
 	@RequestMapping(value="/post/postWritePage.do")
 	public String postWritePage(ModelMap model) throws Exception{
-		
+		model.addAttribute("currentPage","post");
 		return "/post/postWritePage";
 	}
 	
@@ -47,6 +47,7 @@ public class PostController {
 		postService.updateHitCount(postVO);
 		postDetail = postService.selectPostOne(postVO);
 		model.addAttribute("post", postDetail);
+		model.addAttribute("currentPage","post");
 		return "/post/postDetailPage";
 	}
 	

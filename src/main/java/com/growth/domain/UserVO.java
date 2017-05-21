@@ -33,14 +33,25 @@ public class UserVO implements UserDetails{
 	
 	private int photo = -1;
 	
+	private String gradeNm;
+	
 	private String activity;
 	
 	private int point;
 	
 	
+	
 
 	
 	
+	public String getGradeNm() {
+		return gradeNm;
+	}
+
+	public void setGradeNm(String gradeNm) {
+		this.gradeNm = gradeNm;
+	}
+
 	public String getActivity() {
 		return activity;
 	}

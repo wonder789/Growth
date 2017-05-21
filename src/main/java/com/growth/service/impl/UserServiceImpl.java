@@ -1,5 +1,7 @@
 package com.growth.service.impl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -60,6 +62,12 @@ public class UserServiceImpl implements UserService {
 			throw new UsernameNotFoundException("없는 유저 입니다.");
 		}
 		return result;
+	}
+
+
+	@Override
+	public List<UserVO> selectUserList(UserVO userVO) throws Exception {
+		return userDao.selectUserList(userVO);
 	}
 	
 	

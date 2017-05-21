@@ -16,19 +16,21 @@
 		  <ul class="nav navbar-nav">
 		  	<li <c:if test="${ currentPage eq 'post' }">class="active"</c:if> ><a href="${pageContext.request.contextPath}/post/postPage.do">
 		  			<i class="fa fa-bookmark" aria-hidden="true"></i>포스트</a></li>	
-			<li ><a href="news.html">뉴스</a></li>
-			<li><a href="consult.html">고민상담</a></li>
-			<li><a href="notice.html">공지사항</a></li>
+			<li ><a href="news.html"><i class="fa fa-newspaper-o" aria-hidden="true"></i>뉴스</a></li>
+			<li><a href="consult.html"><i class="fa fa-users" aria-hidden="true"></i>고민상담</a></li>
+			<li><a href="notice.html"<i class="fa fa-bullhorn" aria-hidden="true"></i>>공지사항</a></li>
 			<sec:authorize access="isAnonymous()">
-				<li <c:if test="${ currentPage eq 'login' }">class="active"</c:if>><a href="${pageContext.request.contextPath}/auth/loginPage.do">로그인</a></li>
-				<li <c:if test="${ currentPage eq 'signup' }">class="active"</c:if>><a href="${pageContext.request.contextPath}/auth/signupPage.do">회원가입</a></li>	
+				<li <c:if test="${ currentPage eq 'login' }">class="active"</c:if>><a href="${pageContext.request.contextPath}/auth/loginPage.do">
+				<i class="fa fa-key" aria-hidden="true"></i>로그인</a></li>
+				<li <c:if test="${ currentPage eq 'signup' }">class="active"</c:if>><a href="${pageContext.request.contextPath}/auth/signupPage.do">
+					<i class="fa fa-sign-in" aria-hidden="true"></i>회원가입</a></li>	
 			</sec:authorize>
 			<sec:authorize access="isAuthenticated()">
 				<li><a href="${pageContext.request.contextPath}/auth/mypage.do">
 					<img class="circular-square user-image" 
 						 src="${pageContext.request.contextPath}/image.do?id=<sec:authentication property='principal.photo'/>" />
 		  <sec:authentication property="principal.name"/></a></li>
-				<li><a href="${pageContext.request.contextPath}/auth/logout.do">로그아웃</a></li>
+				<li><a href="${pageContext.request.contextPath}/auth/logout.do"><i class="fa fa-sign-out" aria-hidden="true"></i>로그아웃</a></li>
 			</sec:authorize>
 		  </ul>
 		</div><!--/.nav-collapse -->

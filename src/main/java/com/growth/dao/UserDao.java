@@ -1,5 +1,7 @@
 package com.growth.dao;
 
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -27,6 +29,10 @@ public class UserDao {
 	
 	public void insertUserPointHistory(UserVO userVO ) throws Exception{
 		sqlSession.insert("com.growth.userMapper.insertUserPointHistory",userVO);
+	}
+	
+	public List<UserVO> selectUserList(UserVO userVO) throws Exception{
+		return sqlSession.selectList("com.growth.userMapper.selectUserList",userVO);
 	}
 	
 }

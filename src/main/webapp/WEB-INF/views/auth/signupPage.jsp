@@ -196,8 +196,8 @@
 				    <div class="col-sm-7">
 					    <div class="input-wrap">
 						      <select class="form-control" id="grade" name="grade">
+						      <option value="">전체</option>
 						      	<c:forEach items="${gradeCodeList }" var="gradeCode">
-						      		<option value="">전체</option>
 						      		<option value="${gradeCode.code }">${ gradeCode.codeNm}</option>
 						      	</c:forEach>
 						      </select>
@@ -237,7 +237,7 @@
 				  </div>
 				  <div class="form-group">
 				    <p class="text-center">
-				    	<input type="button" class="btn btn-danger" id="signup-btn" value="회원가입" />
+				    	<button class="btn btn-danger" id="signup-btn" ><i class="fa fa-sign-in"></i>회원가입</button>
 				    </p>
 				  </div>
 			</form>

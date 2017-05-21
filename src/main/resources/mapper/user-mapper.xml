@@ -86,5 +86,21 @@
     	</if>
     </select>
     
+    <select id="selectUserList" parameterType="userVO" resultType="userVO">
+    	SELECT * FROM (
+    		SELECT EMAIL,
+	    		  DEPARTMENT,
+	    		  fnGetCodeNm(GRADE) gradeNm,
+	    		  NAME,
+	    		  PHOTO,
+	    		  TYPE,
+	    		  AUTH,
+	    		  REG_DATE,
+	    		  MOD_DATE
+	    	FROM USERS
+	    	ORDER BY POINT desc
+    	) T 
+    	LIMIT 0,10
+    </select>
 </mapper>
 
