@@ -19,4 +19,12 @@
 			AND P_CODE = #{pCode}
 		</if>
  	</select>
+ 	
+ 	<select id="selectCodeByCodeId" resultType="codeVO" parameterType="string">
+ 		SELECT *
+ 		FROM 
+ 		CODE 
+ 		WHERE 1=1
+ 		AND code=#{codeId}
+ 	</select>
 </mapper>

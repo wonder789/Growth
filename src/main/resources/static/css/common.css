@@ -74,7 +74,7 @@ section .page-header{
 	margin : 40px 0 20px 0;
 }
 
-.section-header{
+/* .section-header{
 	background-color: #5D81A3;
 	color: white;
 	height: 65px;
@@ -93,8 +93,23 @@ section .page-header{
 	margin: 15px 0;
 	float: left;
 	margin-left: 20px;
-}
+} */
 
+.section-header{
+	position:relative;
+}
+.section-header .page-header{
+	margin-top:0;
+	font-size:25px;
+}
+.section-header .page-header i.fa{
+	margin-right:8px;
+}
+.section-header-right{
+	position:absolute;
+	top:0;
+	right:0;
+}
 .section-body{
 	margin-top:30px;
 }
@@ -138,7 +153,20 @@ section .page-header{
 .form-group.has-error .input-wrap .control-label{
 	display:initial;
 }
-
+.none{
+	display:none;
+}
 .none-i{
 	display:none !important;
+}
+
+#output-photo{
+	width:150px;
+	height:150px;
+}
+
+.well{
+	box-shadow : 1px 2px #ddd !important;
+	border-radius : 20px !important;
+	border : 1px solid #ddd;
 }

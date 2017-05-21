@@ -25,11 +25,16 @@ public class ImageController {
 	private ServletContext context;
 	@RequestMapping("/image.do")
 	public ResponseEntity<byte[]>  getImageAsByteStream(HttpServletResponse response,String id) throws Exception{
-		
 		final HttpHeaders headers = new HttpHeaders();
-	    headers.setContentType(MediaType.IMAGE_PNG);
-
+		byte[] fileData ;
+		try{
+		    headers.setContentType(MediaType.IMAGE_PNG);
+		    fileData = fileService.selectFileBlobData(id).getFileData();
+		} catch( Exception e ){
+			fileData = new byte[10];
+		}
+		
 		 
-		 return new ResponseEntity<byte[]>(fileService.selectFileBlobData(id).getFileData(), headers, HttpStatus.CREATED);
+		 return new ResponseEntity<byte[]>(fileData, headers, HttpStatus.CREATED);
 	}
 }

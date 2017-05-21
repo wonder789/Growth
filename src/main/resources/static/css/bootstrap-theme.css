@@ -14,3 +14,7 @@
 	color: white;
     background-color: #1a5d4c;
 }
+
+.navbar-default .navbar-text, .navbar-default .navbar-nav > li > a i.fa{
+	margin-right:4px;
+}

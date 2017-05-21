@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.growth.postMapper">
+	
+	<insert id="insertPost" parameterType="postVO">
+		INSERT INTO POST(
+			POST_ID,
+			TITLE,
+			CONTENT,
+			WRITER_ID,
+			HIT_CNT,
+			LIKE_CNT,
+			thumbnail,
+			REG_DATE,
+			MOD_DATE
+		) VALUES (
+			#{postId},
+			#{title},
+			#{content},
+			#{writerId},
+			0,
+			0,
+			<if test="thumbnail == -1">
+				null
+			</if>
+			<if test="thumbnail != -1">
+				#{thumbnail}
+			</if>,
+			now(),
+			now()
+		)
+		
+		<selectKey resultType="int" keyProperty="postId">
+			 SELECT LAST_INSERT_ID()
+		</selectKey>
+	</insert>
+	
+	<insert id="insertPostTags" parameterType="hashmap">
+		INSERT INTO POST_TAG(
+			POST_ID,
+			TAG_NAME
+		) VALUES 
+		<foreach collection="tagList" item="item" separator=" , ">
+			( #{postId} , #{item} )
+		</foreach>
+		
+	</insert>
+ 	
+ 	<select id="selectPopularHashTag" resultType="string">
+ 		SELECT * FROM (
+			SELECT TAG_NAME
+				FROM POST_TAG
+			GROUP BY TAG_NAME
+			ORDER BY COUNT(TAG_NAME) DESC
+		) TAG
+		LIMIT 0,30
+ 	</select>
+ 	
+ 	<select id="selectPostList" resultType="postVO" parameterType="postVO">
+ 		SELECT * FROM (
+	 		SELECT A.POST_ID,
+				   A.TITLE,
+				   A.CONTENT,
+			       concat(left(fnStripTags(A.CONTENT),500),
+						if(length(fnStripTags(A.CONTENT))>500,"...","")) PLAIN_CONTENT,
+			       A.WRITER_ID,
+			       B.DEPARTMENT,
+			       concat(fnGetCodeNm(B.GRADE), " " , B.NAME ) name,
+			       b.PHOTO PHOTO,
+			       A.HIT_CNT,
+			       A.LIKE_CNT,
+			       A.REG_DATE,
+			       A.MOD_DATE,
+			       A.THUMBNAIL,
+			       ( SELECT COUNT(1)
+						FROM POST_COMMENT D
+			            WHERE D.POST_ID = A.POST_ID) COMMENT_CNT
+			FROM POST A
+			INNER JOIN USERS B 
+			ON A.WRITER_ID = B.EMAIL
+		) T
+		WHERE 1 = 1
+		<if test = "searchCondition == 'tagName'">
+			AND POST_ID IN (
+				SELECT POST_ID
+				FROM POST_TAG
+				WHERE TAG_NAME IN 
+				<foreach collection="tag" item="tagItem" open="(" close=")" separator=" , ">
+					#{tagItem}
+				</foreach>
+			)
+		</if>
+		<if test = "searchCondition == 'keyword'">
+			AND TITLE LIKE CONCAT('%',#{searchKeyword},'%') 
+			 OR PLAIN_CONTENT LIKE CONCAT('%',#{searchKeyword},'%')
+			 OR POST_ID IN ( SELECT POST_ID 
+			 				FROM POST_TAG
+			 				WHERE TAG_NAME = #{searchKeyword} )
+		
+		</if>
+		ORDER BY HIT_CNT+(LIKE_CNT*2) DESC
+ 	</select>
+ 	
+ 	<select id="selectPostOne" resultType="postVO" parameterType="postVO">
+ 			SELECT A.POST_ID,
+				   A.TITLE,
+				   A.CONTENT,
+			       fnStripTags(A.CONTENT) PLAIN_CONTENT,
+			       A.WRITER_ID,
+			       B.DEPARTMENT,
+			       concat(fnGetCodeNm(B.GRADE), " " , B.NAME ) name,
+			       b.PHOTO PHOTO,
+			       A.HIT_CNT,
+			       A.LIKE_CNT,
+			       A.REG_DATE,
+			       A.MOD_DATE,
+			       A.THUMBNAIL,
+			       ( SELECT COUNT(1)
+						FROM POST_COMMENT D
+			            WHERE D.POST_ID = A.POST_ID) COMMENT_CNT
+			FROM POST A
+			INNER JOIN USERS B 
+			ON A.WRITER_ID = B.EMAIL
+			WHERE POST_ID = #{postId}
+ 	</select>
+ 	
+</mapper>

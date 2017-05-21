@@ -4,12 +4,6 @@
 <html>
 <head>
 <%@ include file="../include/headTag.jsp" %>
-<style type="text/css">
-	#output-photo{
-		width:150px;
-		height:150px;
-	}
-</style>
 <script type="text/javascript">
 	$(document).ready(function(){
 		$("#signup-btn").click(userSignup);

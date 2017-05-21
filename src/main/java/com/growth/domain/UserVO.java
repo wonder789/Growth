@@ -31,10 +31,32 @@ public class UserVO implements UserDetails{
 	
 	private String modDate;
 	
-	private int photo;
+	private int photo = -1;
+	
+	private String activity;
+	
+	private int point;
+	
+	
 
 	
 	
+	public String getActivity() {
+		return activity;
+	}
+
+	public void setActivity(String activity) {
+		this.activity = activity;
+	}
+
+	public int getPoint() {
+		return point;
+	}
+
+	public void setPoint(int point) {
+		this.point = point;
+	}
+
 	public int getPhoto() {
 		return photo;
 	}

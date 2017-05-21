@@ -21,4 +21,9 @@ public class CodeServiceImpl implements CodeService {
 		return codeDao.selectCodeByPcode(pCode);
 	}
 
+	@Override
+	public CodeVO selectCodeByCodeId(String codeId) throws Exception {
+		return codeDao.selectCodeByCodeId(codeId);
+	}
+
 }

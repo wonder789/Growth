@@ -35,6 +35,38 @@
 		)
     </insert>
     
+    <insert id="insertUserPointHistory" parameterType="userVO">
+    	INSERT INTO USER_POINT_HISTORY(
+    		USER_EMAIL,
+    		ACTIVITY,
+    		POINT,
+    		REG_DATE,
+    		MOD_DATE
+    	) 
+    	VALUES 
+    	(
+    		#{email},
+    		#{activity},
+    		#{point},
+    		now(),
+    		now()
+    	)
+    </insert>
+
+	<update id="updateUserPoint" parameterType="string" >
+		UPDATE USERS SET point = ( 
+							select sum  from (
+								SELECT
+									USER_EMAIL,
+									SUM(POINT) sum
+									FROM USER_POINT_HISTORY
+									WHERE USER_EMAIL = #{email}
+									GROUP BY USER_EMAIL
+							) T
+						)
+			WHERE 1=1
+			AND EMAIL = #{email}
+	</update>
     
     <select id="findUser" parameterType="userVO" resultType="userVO">
     	SELECT EMAIL,

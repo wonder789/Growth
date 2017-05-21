@@ -21,6 +21,12 @@ public class UserDao {
 		return sqlSession.selectOne("com.growth.userMapper.findUser",userVO);
 	}
 	
+	public void updateUserPoint(String email) throws Exception{
+		sqlSession.update("com.growth.userMapper.updateUserPoint", email);
+	}
 	
+	public void insertUserPointHistory(UserVO userVO ) throws Exception{
+		sqlSession.insert("com.growth.userMapper.insertUserPointHistory",userVO);
+	}
 	
 }

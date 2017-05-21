@@ -28,7 +28,7 @@ public class AuthController {
 	
 	@RequestMapping(value="/auth/signupPage.do")
 	public String signupPage(ModelMap model) throws Exception{
-		
+		model.addAttribute("currentPage","signup");
 		model.addAttribute("gradeCodeList", codeService.selectCodeByPcode("UG01"));
 		model.addAttribute("userTypeCodeList", codeService.selectCodeByPcode("UT01"));
 		
@@ -37,7 +37,7 @@ public class AuthController {
 	
 	@RequestMapping(value="/auth/loginPage.do")
 	public String loginPage(ModelMap model) throws Exception{
-		
+		model.addAttribute("currentPage","login");
 		return "auth/loginPage";
 	}
 	

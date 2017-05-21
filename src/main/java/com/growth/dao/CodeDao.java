@@ -18,4 +18,8 @@ public class CodeDao {
 	public List<CodeVO> selectCodeByPcode(String pCode) throws Exception{
 		return sqlSession.selectList("com.growth.codeMapper.selectCodeByPcode", pCode);
 	}
+	
+	public CodeVO selectCodeByCodeId(String codeId) throws Exception{
+		return sqlSession.selectOne("com.growth.codeMapper.selectCodeByCodeId", codeId);
+	}
 }
