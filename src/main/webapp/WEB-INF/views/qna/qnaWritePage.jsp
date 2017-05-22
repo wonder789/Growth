@@ -134,7 +134,7 @@
 		
 		remainPoint = getRemainPoint();
 		
-		if( betPoint.value != null ){
+		if( betPoint.value != "" ){
 			if( betPoint.value > remainPoint ){
 				invalid.push({
 					element : "betPoint",
@@ -143,7 +143,9 @@
 			}	
 		}
 		
-		
+		if( betPoint.value == ""){
+			betPoint.value = 0;
+		}
 		
 		if( invalid.length == 0 ){
 			return true;
