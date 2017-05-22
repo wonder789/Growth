@@ -16,7 +16,7 @@
 		  <ul class="nav navbar-nav">
 		  	<li <c:if test="${ currentPage eq 'post' }">class="active"</c:if> ><a href="${pageContext.request.contextPath}/post/postPage.do">
 		  			<i class="fa fa-bookmark" aria-hidden="true"></i>포스트</a></li>	
-			<li ><a href="news.html"><i class="fa fa-newspaper-o" aria-hidden="true"></i>뉴스</a></li>
+			<li ><a href="${pageContext.request.contextPath}/news/newsPage.do"><i class="fa fa-newspaper-o" aria-hidden="true"></i>뉴스</a></li>
 			<li><a href="consult.html"><i class="fa fa-users" aria-hidden="true"></i>고민상담</a></li>
 			<li><a href="notice.html"<i class="fa fa-bullhorn" aria-hidden="true"></i>>공지사항</a></li>
 			<sec:authorize access="isAnonymous()">

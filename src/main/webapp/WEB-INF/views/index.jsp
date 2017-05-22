@@ -22,7 +22,7 @@
     	padding: 0;
 	}
 	.side-menu-list > li{
-		margin-bottom:15px;
+		margin-bottom:17px;
 	}
 	.menu-list-item > a{
 		color : black;
@@ -32,6 +32,7 @@
 	.menu-list-item .rank{
 		margin-right:4px;
 	}
+	
 </style>
 <%@ include file="include/headTag.jsp" %>
 <script type="text/javascript">

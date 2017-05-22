@@ -5,7 +5,7 @@
 }
 
 body{
-	padding-top:55px;
+	padding-top:70px;
 	font-family : 'NanumGothic';
 }
 
@@ -82,10 +82,22 @@ body{
 }
 
 footer{
-	height: 200px;
 	background: #434a54;
 	margin-top: 70px;
 }	
+#footer{
+	padding:20px;
+}
+#footer-form{
+	border-radius:10px !important;
+}
+#footer-form .page-header{
+	font-size:20px;
+	margin:10px 0;
+}
+#footer-form .page-header i.fa{
+	margin-right:10px;
+}
 
 section{
 	overflow:hidden;
@@ -93,7 +105,40 @@ section{
 section .page-header{
 	margin : 40px 0 20px 0;
 }
+.ico-box{
+	color:white;
+	text-align:center;
+}
+.ico-box .fa{
+	font-size:70px;
+}
+.link-list-wrap{
+	border-radius:10px !important;
+}
+.link-list-heading{
+   padding: 0 20px;
+}
+.link-list-heading .fa{
+	margin-right:10px;
+}
+.link-list{
+	margin: 0;
+    list-style: none;
+    padding: 0 20px;
+    font-size: 15px;
+}
+ul.link-list .fa {
+    margin-right: 11px;
+}
 
+ul.link-list li {
+    margin-bottom: 15px;
+}
+
+ul.link-list li a {
+    /* color: black; */
+    font-weight: bold;
+}
 /* .section-header{
 	background-color: #5D81A3;
 	color: white;
@@ -276,6 +321,9 @@ section .page-header{
 		.card-sizer,
 		.card-wrap {
 			 width: 100% !important;
+		 }
+		 .news-wrap{
+		 	margin-left:0 !important;
 		 }
 	}
 	/*태블릿과 PC 중간 구역*/

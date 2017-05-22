@@ -21,4 +21,12 @@ public class NewsController {
 		model.addAttribute("newsList" , newsService.getNewsList("군 장병 자기계발",5));
 		return "/news/newsList";
 	}
+	
+	@RequestMapping(value="/news/newsPage.do")
+	public String newsPage(ModelMap model) throws Exception{
+		model.addAttribute("currentPage","news");
+		model.addAttribute("newsList",newsService.getNewsList("군 장병 자기계발", 5));
+		
+		return "/news/newsPage";
+	}
 }
