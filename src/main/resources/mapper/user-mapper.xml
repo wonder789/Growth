@@ -101,7 +101,7 @@
 	    	FROM USERS
 	    	ORDER BY POINT desc
     	) T 
-    	LIMIT 0,10
+    	LIMIT 0,8
     </select>
 </mapper>
 
