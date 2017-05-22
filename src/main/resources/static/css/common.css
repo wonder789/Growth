@@ -295,3 +295,15 @@ section .page-header{
 			 width: 31% !important;
 		 }
 	}
+	
+	.news-img{
+		margin-top:15px;
+	}
+	.news-item{
+		padding-bottom:10px;
+		border-bottom:1px solid #ddd;
+	}
+	.news-heading{
+		margin : 5px 0;
+		font-size:16px;
+	}

@@ -162,7 +162,7 @@
 						<ul class="side-menu-list">
 							<c:forEach items="${userList }" var="user" varStatus="status">
 									<li class="menu-list-item"><a href="#"><span class='rank'>${status.index +1 }위</span>  <img src="${pageContext.request.contextPath }/image.do?id=${user.photo}" 
-											alt="" class="user-image circular-square" />${user.gradeNm} ${user.name }</a></li>
+											alt="" class="user-image circular-square" />${user.gradeNm} ${user.name }</a><span class="pull-right">${user.point }점 </span></li>
 							</c:forEach>
 							
 						</ul>
@@ -172,7 +172,7 @@
 			
 			
 						
-				<section id="post">
+				<section id="post" class="section">
 					<div class="section-header">
 						<h2 class="page-header text-center"><i class="fa fa-bookmark" aria-hidden="true"></i>인기 포스트</h2>
 						<div class="section-header-right">
@@ -188,100 +188,19 @@
 					
 				</section><!-- board-->
 				
-				<section id="news">
-					<h2 class="page-header text-center">News</h2>
-					<div class="rows">
-						<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
-						<div class="news-wrap">
-							<img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" class="img-responsive" width="100%"/>
-							<h4>뉴스영역헤더1</h4>
-							<p>
-								<span class="writer"><img class="img img-rounded" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw=="/>작성자 1</span>
-								<span class="write-date">2017-05-15</span>
-							</p>
-							<p>기사일부영역1</p>
-						</div>
-						</div>
-						<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
-							<div class="news-wrap">
-								<img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" class="img-responsive" width="100%"/>
-								<h4>뉴스영역헤더2</h4>
-								<p>
-									<span class="writer"><img class="img img-rounded" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw=="/>작성자 1</span>
-									<span class="write-date">2017-05-15</span>
-								</p>
-								<p>기사일부영역1</p>
-							</div>
-						</div>
-						<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
-							<div class="news-wrap">
-								<img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" class="img-responsive" width="100%"/>
-								<h4>뉴스영역헤더3</h4>
-								<p>
-									<span class="writer"><img class="img img-rounded" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw=="/>작성자 1</span>
-									<span class="write-date">2017-05-15</span>
-								</p>
-								<p>기사일부영역1</p>
-							</div>
-						</div>
-						<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
-							<div class="news-wrap">
-								<img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" class="img-responsive" width="100%"/>
-								<h4>뉴스영역헤더4</h4>
-								<p>
-									<span class="writer"><img class="img img-rounded" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw=="/>작성자 1</span>
-									<span class="write-date">2017-05-15</span>
-								</p>
-								<p>기사일부영역1</p>
-							</div>
+				<section id="news" class="section">
+				<div class="section-header">
+					<h2 class="page-header text-center"><i class="fa fa-newspaper-o" aria-hidden="true"></i>관련 뉴스</h2>
+				</div>
+				<div class="section-body">
+					<div class="row">
+						<div class="col-md-pull-1 col-md-10 col-md-push-1 col-sm-12 col-xs-12">
+							<%@ include file="news/newsList.jsp" %>	
 						</div>
 					</div>
-					<div class="rows">
-						<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
-						<div class="news-wrap">
-							<img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" class="img-responsive" width="100%"/>
-							<h4>뉴스영역헤더1</h4>
-							<p>
-								<span class="writer"><img class="img img-rounded" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw=="/>작성자 1</span>
-								<span class="write-date">2017-05-15</span>
-							</p>
-							<p>기사일부영역1</p>
-						</div>
-						</div>
-						<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
-							<div class="news-wrap">
-								<img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" class="img-responsive" width="100%"/>
-								<h4>뉴스영역헤더2</h4>
-								<p>
-									<span class="writer"><img class="img img-rounded" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw=="/>작성자 1</span>
-									<span class="write-date">2017-05-15</span>
-								</p>
-								<p>기사일부영역1</p>
-							</div>
-						</div>
-						<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
-							<div class="news-wrap">
-								<img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" class="img-responsive" width="100%"/>
-								<h4>뉴스영역헤더3</h4>
-								<p>
-									<span class="writer"><img class="img img-rounded" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw=="/>작성자 1</span>
-									<span class="write-date">2017-05-15</span>
-								</p>
-								<p>기사일부영역1</p>
-							</div>
-						</div>
-						<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
-							<div class="news-wrap">
-								<img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" class="img-responsive" width="100%"/>
-								<h4>뉴스영역헤더4</h4>
-								<p>
-									<span class="writer"><img class="img img-rounded" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw=="/>작성자 1</span>
-									<span class="write-date">2017-05-15</span>
-								</p>
-								<p>기사일부영역1</p>
-							</div>
-						</div>
-					</div>
+				</div>
+					
+					
 				</section> <!-- news -->
 				
 <%@ include file="include/footer.jsp" %>

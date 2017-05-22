@@ -96,7 +96,8 @@
 	    		  TYPE,
 	    		  AUTH,
 	    		  REG_DATE,
-	    		  MOD_DATE
+	    		  MOD_DATE,
+	    		  POINT
 	    	FROM USERS
 	    	ORDER BY POINT desc
     	) T 
