@@ -70,4 +70,8 @@ public class QnaDao {
 	public List<QnaVO> selectQnaComments(QnaVO qnaVO) throws Exception{
 		return sqlSession.selectList("com.growth.qnaMapper.selectQnaComments", qnaVO);
 	}
+	
+	public void qnaSelectAnswer(QnaVO qnaVO) throws Exception{
+		sqlSession.update("com.growth.qnaMapper.qnaSelectAnswer",qnaVO);
+	}
 }

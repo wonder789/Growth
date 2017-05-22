@@ -16,9 +16,9 @@
 		  <ul class="nav navbar-nav">
 		  	<li <c:if test="${ currentPage eq 'post' }">class="active"</c:if> ><a href="${pageContext.request.contextPath}/post/postPage.do">
 		  			<i class="fa fa-bookmark" aria-hidden="true"></i>포스트</a></li>	
-			<li ><a href="${pageContext.request.contextPath}/news/newsPage.do"><i class="fa fa-newspaper-o" aria-hidden="true"></i>뉴스</a></li>
-			<li><a href="/qna/qnaPage.do"><i class="fa fa-question" aria-hidden="true"></i>질의응답</a></li>
-			<li><a href="/notice/noticePage.do"<i class="fa fa-bullhorn" aria-hidden="true"></i>>공지사항</a></li>
+			<li <c:if test="${ currentPage eq 'news' }">class="active"</c:if> ><a href="${pageContext.request.contextPath}/news/newsPage.do"><i class="fa fa-newspaper-o" aria-hidden="true"></i>뉴스</a></li>
+			<li <c:if test="${ currentPage eq 'qna' }">class="active"</c:if> ><a href="/qna/qnaPage.do"><i class="fa fa-question" aria-hidden="true"></i>질의응답</a></li>
+			<li <c:if test="${ currentPage eq 'notice' }">class="active"</c:if> ><a href="/notice/noticePage.do"<i class="fa fa-bullhorn" aria-hidden="true"></i>>공지사항</a></li>
 			<sec:authorize access="isAnonymous()">
 				<li <c:if test="${ currentPage eq 'login' }">class="active"</c:if>><a href="${pageContext.request.contextPath}/auth/loginPage.do">
 				<i class="fa fa-key" aria-hidden="true"></i>로그인</a></li>

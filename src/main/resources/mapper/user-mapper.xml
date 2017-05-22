@@ -40,6 +40,7 @@
     		USER_EMAIL,
     		ACTIVITY,
     		POINT,
+    		M_POINT,
     		REG_DATE,
     		MOD_DATE
     	) 
@@ -48,6 +49,7 @@
     		#{email},
     		#{activity},
     		#{point},
+    		#{mPoint},
     		now(),
     		now()
     	)
@@ -58,7 +60,7 @@
 							select sum  from (
 								SELECT
 									USER_EMAIL,
-									SUM(POINT) sum
+									SUM(POINT)- SUM(M_POINT) SUM
 									FROM USER_POINT_HISTORY
 									WHERE USER_EMAIL = #{email}
 									GROUP BY USER_EMAIL

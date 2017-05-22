@@ -21,14 +21,14 @@ public class QnaController {
 	private QnaService qnaService;
 	@RequestMapping(value="/qna/qnaPage.do")
 	public String qnaPage( ModelMap model ) throws Exception{
-		
+		model.addAttribute("currentPage","qna");
 		model.addAttribute("hashTagList", qnaService.selectPopularHashTag() );
 		return "/qna/qnaPage";
 	}
 	
 	@RequestMapping(value="/qna/qnaWritePage.do")
 	public String qnaWritePage(ModelMap model) throws Exception{
-		
+		model.addAttribute("currentPage","qna");
 		return "/qna/qnaWritePage";
 	}
 	
@@ -67,8 +67,14 @@ public class QnaController {
 	
 	@RequestMapping(value="/qna/qnaCommentList.do")
 	public String qnaCommentList(QnaVO qnaVO,
+							@AuthenticationPrincipal UserVO currentUser,
 						 ModelMap model) throws Exception{
 		model.addAttribute("qnaCommentList", qnaService.selectQnaComments(qnaVO));
+		model.addAttribute("qnaInfo", qnaService.selectQnaOne(qnaVO));
+		if( currentUser != null ){
+			model.addAttribute("currentUserId", currentUser.getEmail());
+		}
+		
 		return "/qna/qnaCommentList";
 	}
 	
@@ -138,5 +144,23 @@ public class QnaController {
 		return result;
 	}
 	
+	
+	@RequestMapping(value="/qna/qnaSelectAnswer.do", method=RequestMethod.POST)
+	@ResponseBody
+	public AjaxResult qnaSelectAnswer( QnaVO qnaVO,
+			@AuthenticationPrincipal UserVO currentUser) throws Exception{
+		AjaxResult result = new AjaxResult();
+		
+		try{
+			qnaService.qnaSelectAnswer(qnaVO, currentUser);
+			result.setStatus(AjaxResult.SUCCESS)
+				  .setMessage("채택 처리가 완료되었습니다.");
+		} catch (Exception e){
+			result.setStatus(AjaxResult.EXCEPTION)
+				.setMessage("예기치 못한 오류가 발생하였습니다.");
+		}
+		
+		return result;
+	}
 	
 }

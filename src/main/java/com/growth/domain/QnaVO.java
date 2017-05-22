@@ -41,9 +41,28 @@ public class QnaVO {
 	
 	private String name;
 	
+	private String chooseYn;
+	
+	private int commentId;
 	
 	
 	
+	public int getCommentId() {
+		return commentId;
+	}
+
+	public void setCommentId(int commentId) {
+		this.commentId = commentId;
+	}
+
+	public String getChooseYn() {
+		return chooseYn;
+	}
+
+	public void setChooseYn(String chooseYn) {
+		this.chooseYn = chooseYn;
+	}
+
 	public String getDepartment() {
 		return department;
 	}

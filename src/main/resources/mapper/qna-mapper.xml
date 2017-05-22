@@ -135,6 +135,7 @@
 			  B.PHOTO PHOTO,
 			  CONCAT(fnGetCodeNm(B.GRADE)," ",B.NAME) NAME,
 			  A.REG_DATE,
+			  A.CHOOSE_YN,
 			  A.MOD_DATE
 		FROM QNA_COMMENT A 
 			INNER JOIN USERS B
@@ -183,7 +184,7 @@
 		       A.LIKE_CNT,
 		       A.REG_DATE,
 		       A.MOD_DATE,
-		       A.BET_POINT,
+		       A.BET_POINT betPoint,
 		       (SELECT COUNT(1)
 					FROM QNA_LIKE
 					WHERE USER_EMAIL = A.WRITER_ID
@@ -196,4 +197,10 @@
 		ON A.WRITER_ID = B.EMAIL
 		WHERE QNA_ID = #{qnaId}
  	</select>
+ 	
+ 	<update id="qnaSelectAnswer" parameterType="qnaVO">
+ 		UPDATE QNA_COMMENT 
+ 			SET CHOOSE_YN = 'Y'
+ 		WHERE COMMENT_ID = #{commentId}
+ 	</update>
 </mapper>

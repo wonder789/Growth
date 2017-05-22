@@ -8,7 +8,10 @@ body{
 	padding-top:70px;
 	font-family : 'NanumGothic';
 }
-
+.user-grade{
+    margin-right: 6px;
+    color: #434a54;
+}
 .logo, .logo-header{
     background-image: url(../img/logo_default.png);
     background-repeat: no-repeat;
@@ -20,9 +23,19 @@ body{
 	background-position-y:0;
 	margin: 25px 0;
 }
+.logo-desc-heading{
+    padding-bottom: 15px;
+    border-bottom: 1px solid #ddd;
+    width: 80%;
+    margin: 0 auto;
+    margin-bottom: 20px;
+}
 .logo:hover{
 	background-image:url(../img/logo_hover.png);
 	
+}
+.red{
+	color:red;
 }
 .section{
 	margin-top:50px;
@@ -112,7 +125,7 @@ section .page-header{
 .ico-box .fa{
 	font-size:70px;
 }
-.link-list-wrap{
+#link-list-wrap.well{
 	border-radius:10px !important;
 }
 .link-list-heading{
@@ -288,6 +301,24 @@ ul.link-list li a {
 	.card-desc .seperate,.qna-card-desc .seperate{
 		margin-right:10px;
 	}
+	.qna-card-wrap{
+		height:290px !important;
+		margin-bottom:20px !important;
+	}
+	.qna-card-heading{
+    	text-overflow: ellipsis;
+	    word-break: break-word;
+	    overflow: hidden;
+	    width: 100%;
+	    white-space: nowrap;
+    }
+    .qna-card-content{
+	    overflow: hidden;
+    }
+    .qna-card-body{
+    	height:160px;
+    }
+	
 	.btn .fa{
 		margin-right:5px;
 	}
@@ -295,7 +326,7 @@ ul.link-list li a {
 		background:#3bafda;
 		color:white;
 	}
-	
+
 	/* Large devices (large desktops, 1200px and up) */
 	@media (min-width: 1200px ) {
 		/* fluid 5 columns */
@@ -354,4 +385,12 @@ ul.link-list li a {
 	.news-heading{
 		margin : 5px 0;
 		font-size:16px;
+	}
+	
+	.select-answer{
+	    text-align: center;
+	    font-weight:bold;
+	    background: #8cc152;
+	    color: white;
+	    margin-bottom: 10px;
 	}

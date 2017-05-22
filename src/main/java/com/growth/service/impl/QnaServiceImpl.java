@@ -107,4 +107,33 @@ public class QnaServiceImpl implements QnaService {
 		return qnaDao.selectQnaComments(qnaVO);
 	}
 
+
+
+
+	@Override
+	public void qnaSelectAnswer(QnaVO qnaVO, UserVO currentUser) throws Exception {
+		UserVO parameter = new UserVO();
+		//채택여부 업데이트 
+		qnaDao.qnaSelectAnswer(qnaVO);
+		//걸려있는 채택포인트 셀렉트 
+		QnaVO qnaDetail = qnaDao.selectQnaOne(qnaVO);
+		//현재 유저 포인트 차감 
+		parameter.setActivity(Const.QNA_SELECT_ANSWER);
+		parameter.setmPoint(qnaDetail.getBetPoint());
+		parameter.setEmail(currentUser.getEmail());
+		userDao.insertUserPointHistory(parameter);
+		
+		//채택 받은 유저 포인트 증가
+		parameter = new UserVO();
+		parameter.setActivity(Const.QNA_CHOOSED);
+		parameter.setPoint(qnaDetail.getBetPoint());
+		parameter.setEmail(qnaVO.getWriterId());
+		userDao.insertUserPointHistory(parameter);
+		
+		//드라이버 컬럼 업데이트
+		userDao.updateUserPoint(currentUser.getEmail());
+		userDao.updateUserPoint(qnaVO.getWriterId());
+		
+	}
+
 }

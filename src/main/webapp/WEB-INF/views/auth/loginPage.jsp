@@ -24,6 +24,7 @@
 				<form class="form-horizontal well" action="/auth/login.do" method="POST" id="login-form" name='login_form'>
 				  <div class="form-header">
 				  	<h4 class="logo-header text-center">Growth</h4>
+				  	<h5 class="text-center logo-desc-heading">군 장병 자기계발 플랫폼 </h5>
 				  </div>
 				  <div class="form-group">
 				    <label for="email" class="col-sm-3 control-label">이메일</label>

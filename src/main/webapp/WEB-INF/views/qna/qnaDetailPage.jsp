@@ -85,6 +85,8 @@
 		    $btnLikeCancel   = $("#btn-like-cancel"),
 		    $btnCommentWrite = $("#btn-comment-write");
 		loadQnaCommentList();
+
+		$(document).on("click",".btn-choose",qnaSelectAnswer);
 		$btnLike
 			.click(function(){
 				$.ajax({
@@ -159,7 +161,25 @@
 				}
 			});
 		}
+		
+		
+		function qnaSelectAnswer(){
+			if( !confirm("채택하시겠습니까?") )
+				return ;
 			
+			$.ajax({
+				url : "${pageContext.request.contextPath}/qna/qnaSelectAnswer.do",
+				type : "POST",
+				data : $(this).parents(".media-body").find(".choose-form").serialize(),
+				success : function( result ){
+					alert(result.message);
+					if( result.status == 200 ){
+						loadQnaCommentList();						
+					}
+				}
+			});
+			
+		}
 	});
 </script>
 </head>
@@ -167,7 +187,7 @@
 <%@ include file="../include/header.jsp" %>
 <section class="section" id="qna-detail">
 	<div class="section-header">
-		<h4 class="page-header"><i class="fa fa-bookmark" aria-hidden="true"></i>${ qna.title}</h4>
+		<h4 class="page-header"><i class="fa fa-question" aria-hidden="true"></i>${ qna.title}</h4>
 		<div class="section-header-right">
 			<a href="${pageContext.request.contextPath }/qna/qnaPage.do" id="refresh-btn" class="btn btn-primary" >
 			<i class="fa fa-list"></i>목록으로</a>
@@ -195,6 +215,7 @@
 							<span class="hit-cnt"><i class="fa fa-eye"></i>조회수 ${qna.hitCnt }</span>
 							<span class="like-cnt"><i class="fa fa-heart"></i>좋아요 ${qna.likeCnt }</span>
 							<span class="comment-cnt"><i class="fa fa-comment"></i>댓글수  ${qna.commentCnt }</span>
+							<span class="bet-point"><i class="fa fa-gift" aria-hidden="true"></i>채택시 포인트  ${qna.betPoint }P</span>
 						</p>	
 					</div>
 					<div class="right-panel">

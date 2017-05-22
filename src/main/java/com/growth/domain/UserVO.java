@@ -39,11 +39,16 @@ public class UserVO implements UserDetails{
 	
 	private int point;
 	
+	private int mPoint;
 	
-	
+	public int getmPoint() {
+		return mPoint;
+	}
 
-	
-	
+	public void setmPoint(int mPoint) {
+		this.mPoint = mPoint;
+	}
+
 	public String getGradeNm() {
 		return gradeNm;
 	}

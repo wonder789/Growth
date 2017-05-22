@@ -16,6 +16,7 @@
 						<span class="seperate hit"><i class="fa fa-eye"></i>${qna.hitCnt}</span> 
 						<span class="seperate like"><i class="fa fa-heart"></i>${qna.likeCnt}</span>
 						<span class="seperate comment"><i class="fa fa-comment"></i>${qna.commentCnt}</span>
+						<span class="seperate betPoint"><i class="fa fa-gift" aria-hidden="true"></i>${qna.betPoint}P</span>
 					</p>
 					<p class="qna-card-desc">
 						<span class="reg-date"><i class="fa fa-clock-o"></i>${qna.regDate}</span>

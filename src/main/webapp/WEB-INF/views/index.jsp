@@ -163,7 +163,9 @@
 						<ul class="side-menu-list">
 							<c:forEach items="${userList }" var="user" varStatus="status">
 									<li class="menu-list-item"><a href="#"><span class='rank'>${status.index +1 }위</span>  <img src="${pageContext.request.contextPath }/image.do?id=${user.photo}" 
-											alt="" class="user-image circular-square" />${user.gradeNm} ${user.name }</a><span class="pull-right">${user.point }점 </span></li>
+											alt="" class="user-image circular-square" /><span class="user-grade">${user.gradeNm}</span> <strong class="user-name">${user.name }</strong></a>
+											<span class="pull-right <c:if test='${ status.index < 3 }'>red</c:if>">${user.point }점 </span>
+									</li>
 							</c:forEach>
 							
 						</ul>

@@ -34,7 +34,7 @@ $(document).ready(function(){
 	
 	$("#refresh-btn").click(function(){
 		$(".tag").removeClass("active");
-		loadPostList( null, true );
+		loadQnaList( null, true );
 	});
 	
 	$(".search-query").keypress(function(event){
@@ -74,7 +74,7 @@ function loadQnaList( searchObject , reload ){
 <%@ include file="../include/header.jsp" %>
 <section class="section" id="qna">
 	<div class="section-header">
-		<h2 class="page-header"><i class="fa fa-bookmark" aria-hidden="true"></i>질의응답</h2>
+		<h2 class="page-header"><i class="fa fa-question" aria-hidden="true"></i>질의응답</h2>
 		<div class="section-header-right">
 			<a href="#" id="refresh-btn" class="btn btn-primary" >
 				<i class="fa fa-list"></i>전체보기</a>

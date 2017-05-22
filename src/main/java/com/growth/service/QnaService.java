@@ -3,7 +3,7 @@ package com.growth.service;
 import java.util.List;
 
 import com.growth.domain.QnaVO;
-import com.growth.domain.QnaVO;
+import com.growth.domain.UserVO;
 
 public interface QnaService {
 	
@@ -28,5 +28,6 @@ public interface QnaService {
 	
 	public List<QnaVO> selectQnaComments(QnaVO qnaVO) throws Exception;
 
-
-}
+	public void qnaSelectAnswer(QnaVO qnaVO, UserVO userVO) throws Exception;
+	
+}	

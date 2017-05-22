@@ -36,7 +36,7 @@
 			success : function(result){
 				if( result.status == 200 ){
 					alert(result.message);		
-					location.href="${pageContext.request.contextPath}/auth/loginPage.do";
+					location.href="${pageContext.request.contextPath}";
 				} else if ( result.status == 400 ){
 					alert(result.message);
 				} else if( result.status == 500 ){
@@ -50,7 +50,7 @@
 	function userTypeCheck(){
 		var signupForm = $("#signup-form").get(0);
 		
-		if( $("input[name=type]").val() == "UT0101" ){
+		if( $("input[name=type]:checked").val() == "UT0101" ){
 			$("#department").parents(".form-group").addClass("none-i");
 			$("#grade").parents(".form-group").addClass("none-i");
 		} else {
@@ -151,6 +151,7 @@
 				<form class="form-horizontal well" id="signup-form">
 				  <div class="form-header">
 				  	<h4 class="logo-header text-center">Growth</h4>
+				  	<h5 class="text-center logo-desc-heading">군 장병 자기계발 플랫폼 </h5>
 				  </div>
 				  <div class="form-group">
 				    <label for="email" class="col-sm-3 control-label">이메일</label>
@@ -234,6 +235,11 @@
 				      </div>
 				      
 				    </div>
+				  </div>
+				  <div class="form-group">
+				    <p class="col-sm-offset-3">
+						<a  class="signup-link" href="${pageContext.request.contextPath}/auth/loginPage.do">이미 회원가입을 하셨나요?</a></br>
+				    </p>
 				  </div>
 				  <div class="form-group">
 				    <p class="text-center">
