@@ -3,6 +3,7 @@ package com.growth.web;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -65,6 +66,24 @@ public class AuthController {
 		}
 		
 		
+		return result;
+	}
+	
+	@RequestMapping(value="/auth/remainPoint.do", method=RequestMethod.POST)
+	@ResponseBody
+	public AjaxResult remainPoint(
+			@AuthenticationPrincipal UserVO currentUser
+			) throws Exception{
+		AjaxResult result = new AjaxResult();
+		
+		try{
+			UserVO userVO = userService.findUser(currentUser);
+			result.setData(userVO.getPoint())
+					.setStatus(AjaxResult.SUCCESS);
+		} catch( Exception e){
+			result.setStatus(AjaxResult.EXCEPTION)
+			   .setMessage(e.getMessage());
+		}
 		return result;
 	}
 }
