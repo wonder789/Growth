@@ -245,8 +245,8 @@ ul.link-list li a {
 }
 
 .well{
-	box-shadow : 1px 2px #ddd !important;
-	border-radius : 20px !important;
+	box-shadow : 1px 2px #9e9e9e !important;
+	border-radius : 10px !important;
 	border : 1px solid #ddd;
 }
 
@@ -261,9 +261,12 @@ ul.link-list li a {
 	    display: inline-block;
 	    padding: 5px;
 	    border-radius: 10px;
+	    margin-bottom:5px;
 	    border: 1px solid #ddd;
 	}
-	
+	.tag-list{
+		margin-top:15px;
+	}
 	.tag .fa{
 		margin-right:5px;
 	}
@@ -286,7 +289,7 @@ ul.link-list li a {
 	    border-radius: 10px;
 	    border: 1px solid #ddd;
 	    padding: 10px;
-	    box-shadow: 1px 1px 1px 0px #ddd;
+	    box-shadow: 1px 1px 1px 0px #9e9e9e;
 	}
 	.card-content , .qna-card-content{
 		height:100px;
