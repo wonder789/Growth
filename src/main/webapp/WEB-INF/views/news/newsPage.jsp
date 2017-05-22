@@ -19,6 +19,7 @@
 <section id="news" class="section">
 	<div class="section-header">
 		<h2 class="page-header"><i class="fa fa-newspaper-o" aria-hidden="true"></i>관련 뉴스</h2>
+		<span class="help-block"><i class="fa fa-share-alt"></i>자기계발 관련 최신 뉴스들을 열람해보세요</span>
 	</div>
 	<div class="section-body">
 		<div class="row">
