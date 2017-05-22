@@ -2,6 +2,6 @@
     pageEncoding="UTF-8"%>
 <%@ include file="../include/jstlTag.jsp" %>
 <script type="text/javascript">
-	alert(${message});
+	alert('${message}');
 	location.href="${url}";
 </script>

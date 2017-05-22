@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.growth.qnaMapper">
+
+	<insert id="insertQna" parameterType="qnaVO">
+		INSERT INTO QNA(
+			QNA_ID,
+			TITLE,
+			CONTENT,
+			WRITER_ID,
+			HIT_CNT,
+			LIKE_CNT,
+			BET_POINT,
+			REG_DATE,
+			MOD_DATE
+		) VALUES (
+			#{qnaId},
+			#{title},
+			#{content},
+			#{writerId},
+			0,
+			0,
+			#{betPoint},
+			now(),
+			now()
+		)
+		
+		<selectKey resultType="int" keyProperty="qnaId">
+			 SELECT LAST_INSERT_ID()
+		</selectKey>
+	</insert>
+	
+	
+	<insert id="insertQnaTags" parameterType="hashmap">
+		INSERT INTO QNA_TAG(
+			QNA_ID,
+			TAG_NAME
+		) VALUES 
+		<foreach collection="tagList" item="item" separator=" , ">
+			( #{qnaId} , #{item} )
+		</foreach>
+		
+	</insert>
+	
+	
+	<select id="selectQnaList" resultType="QnaVO" parameterType="QnaVO">
+ 		SELECT * FROM (
+	 		SELECT A.QNA_ID,
+				   A.TITLE,
+				   A.CONTENT,
+			       concat(left(fnStripTags(A.CONTENT),500),
+						if(length(fnStripTags(A.CONTENT))>500,"...","")) PLAIN_CONTENT,
+			       A.WRITER_ID,
+			       B.DEPARTMENT,
+			       concat(fnGetCodeNm(B.GRADE), " " , B.NAME ) name,
+			       b.PHOTO PHOTO,
+			       A.HIT_CNT,
+			       A.LIKE_CNT,
+			       A.BET_POINT,
+			       A.REG_DATE,
+			       A.MOD_DATE,
+			       ( SELECT COUNT(1)
+						FROM QNA_COMMENT D
+			            WHERE D.QNA_ID = A.QNA_ID) COMMENT_CNT
+			FROM QNA A
+			INNER JOIN USERS B 
+			ON A.WRITER_ID = B.EMAIL
+		) T
+		WHERE 1 = 1
+		<if test = "searchCondition == 'tagName'">
+			AND QNA_ID IN (
+				SELECT QNA_ID
+				FROM QNA_TAG
+				WHERE TAG_NAME IN 
+				<foreach collection="tag" item="tagItem" open="(" close=")" separator=" , ">
+					#{tagItem}
+				</foreach>
+			)
+		</if>
+		<if test = "searchCondition == 'keyword'">
+			AND TITLE LIKE CONCAT('%',#{searchKeyword},'%') 
+			 OR PLAIN_CONTENT LIKE CONCAT('%',#{searchKeyword},'%')
+			 OR QNA_ID IN ( SELECT QNA_ID 
+			 				FROM QNA_TAG
+			 				WHERE TAG_NAME = #{searchKeyword} )
+		
+		</if>
+		ORDER BY HIT_CNT+(LIKE_CNT*2) DESC
+ 	</select>
+ 	
+ 	<update id="updateHitCount" parameterType="qnaVO">
+		UPDATE QNA SET HIT_CNT = HIT_CNT + 1 
+			WHERE QNA_ID = #{qnaId}
+	</update> 	
+	
+	<update id="updateLikeCount" parameterType="qnaVO">
+		UPDATE QNA SET LIKE_CNT = (
+				 SELECT COUNT(1) 
+				 FROM QNA_LIKE
+				 WHERE QNA_ID = #{qnaId}
+		  )
+		WHERE QNA_ID = #{qnaId}
+	</update>
+	
+	<insert id="insertQnaLike" parameterType="qnaVO">
+		INSERT INTO QNA_LIKE(
+			USER_EMAIL,
+			QNA_ID
+		) VALUES ( 
+			#{writerId},
+			#{qnaId}
+		)
+	</insert>
+	
+	<select id="selectQnaLikeCnt" parameterType="qnaVO" resultType="int">
+		SELECT COUNT(1)
+		FROM QNA_LIKE
+		WHERE USER_EMAIL = #{writerId}
+		AND   QNA_ID    = #{qnaId} 
+	</select>
+	
+	<delete id="deleteQnaLike" parameterType="qnaVO">
+		DELETE FROM QNA_LIKE
+		WHERE USER_EMAIL = #{writerId}
+		AND   QNA_ID    = #{qnaId} 
+	</delete>
+	
+	
+	<select id="selectQnaComments" parameterType="qnaVO" resultType="qnaVO">
+		SELECT A.QNA_ID,
+		       A.COMMENT_ID,
+			   A.CONTENT,
+			  A.WRITER_ID,
+			  B.PHOTO PHOTO,
+			  CONCAT(fnGetCodeNm(B.GRADE)," ",B.NAME) NAME,
+			  A.REG_DATE,
+			  A.MOD_DATE
+		FROM QNA_COMMENT A 
+			INNER JOIN USERS B
+		ON A.WRITER_ID = B.EMAIL
+		WHERE QNA_ID = #{qnaId}
+		
+	</select>
+	<insert id="insertQnaComment" parameterType="qnaVO" >
+		INSERT INTO QNA_COMMENT(
+			QNA_ID,
+			CONTENT,
+			WRITER_ID,
+			REG_DATE,
+			MOD_DATE
+		) VALUES (
+			#{qnaId},
+			#{content},
+			#{writerId},
+			now(),
+			now()
+		)
+	</insert>
+	
+	
+		
+ 	<select id="selectPopularHashTag" resultType="string">
+ 		SELECT * FROM (
+			SELECT TAG_NAME
+				FROM QNA_TAG
+			GROUP BY TAG_NAME
+			ORDER BY COUNT(TAG_NAME) DESC
+		) TAG
+		LIMIT 0,30
+ 	</select>
+ 	
+ 	<select id="selectQnaOne" resultType="qnaVO" parameterType="qnaVO">
+		SELECT A.QNA_ID,
+			   A.TITLE,
+			   A.CONTENT,
+		       fnStripTags(A.CONTENT) PLAIN_CONTENT,
+		       A.WRITER_ID,
+		       B.DEPARTMENT DEPARTMENT,
+		       concat(fnGetCodeNm(B.GRADE), " " , B.NAME ) name,
+		       b.PHOTO PHOTO,
+		       A.HIT_CNT,
+		       A.LIKE_CNT,
+		       A.REG_DATE,
+		       A.MOD_DATE,
+		       A.BET_POINT,
+		       (SELECT COUNT(1)
+					FROM QNA_LIKE
+					WHERE USER_EMAIL = A.WRITER_ID
+					AND   QNA_ID    = #{qnaId} ) LIKE_YN, 
+		       ( SELECT COUNT(1)
+					FROM QNA_COMMENT D
+		            WHERE D.QNA_ID = A.QNA_ID) COMMENT_CNT
+		FROM QNA A
+		INNER JOIN USERS B 
+		ON A.WRITER_ID = B.EMAIL
+		WHERE QNA_ID = #{qnaId}
+ 	</select>
+</mapper>

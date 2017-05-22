@@ -75,6 +75,7 @@
     		   GRADE,
     		   NAME,
     		   PHOTO,
+    		   POINT,
     		   TYPE,
     		   AUTH,
     		   REG_DATE,
