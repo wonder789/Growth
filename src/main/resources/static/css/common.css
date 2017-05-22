@@ -269,23 +269,23 @@ ul.link-list li a {
 	.card-gutter-sizer{
 		width:1%;
 	}
-	.card-wrap{
+	.card-wrap,.qna-card-wrap{
 	    border-radius: 10px;
 	    border: 1px solid #ddd;
 	    padding: 10px;
 	    box-shadow: 1px 1px 1px 0px #ddd;
 	}
-	.card-content{
+	.card-content , .qna-card-content{
 		height:100px;
 		overflow:hidden;
 	}
 	.card-thumbnail{
 		width:100%;
 	}
-	.card-desc i.fa{
+	.card-desc i.fa ,.qna-card-desc i.fa{
 		margin-right:5px;
 	}
-	.card-desc .seperate{
+	.card-desc .seperate,.qna-card-desc .seperate{
 		margin-right:10px;
 	}
 	.btn .fa{

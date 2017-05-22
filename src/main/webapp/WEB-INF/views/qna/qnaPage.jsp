@@ -96,8 +96,7 @@ function loadQnaList( searchObject , reload ){
 		</div>
 	</div>
 	<div class="section-body">
-		<div class="qna-list">
-			
+		<div class="qna-list row">
 		</div>
 	</div>
 </section>
