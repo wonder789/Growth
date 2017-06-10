@@ -32,7 +32,17 @@
 	.menu-list-item .rank{
 		margin-right:4px;
 	}
-	
+	#elist-table{
+		margin-bottom: 2px;
+    	font-size: 13px;
+	}
+	#elist-table th {
+		background : rgba(193, 230, 245, 0.74);
+		text-align:center;
+	}
+	.carousel-heading{
+		margin-top:5px;
+	}
 </style>
 <%@ include file="include/headTag.jsp" %>
 <script type="text/javascript">
@@ -55,6 +65,11 @@
 		$('.carousel').carousel({
 		    interval: false
 		}); 
+		$(".news-img").lazyload({
+		    effect : "fadeIn"       //효과
+		});
+
+
 		/* openApiCall(); */
 	});
 	
@@ -111,7 +126,6 @@
 				  <ol class="carousel-indicators">
 					<li data-target="#main-image-slide" data-slide-to="0" class="active"></li>
 					<li data-target="#main-image-slide" data-slide-to="1"></li>
-					<li data-target="#main-image-slide" data-slide-to="2"></li>
 				  </ol>
 				  <div class="carousel-inner" role="listbox">
 					<div class="item active">
@@ -130,27 +144,40 @@
 					  </div>
 					</div>
 					<div class="item">
-					  <img class="second-slide" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Second slide">
+					  <img class="second-slide"  src="${pageContext.request.contextPath }/img/banner2.jpg" alt="Second slide">
 					  <div class="container">
 						<div class="carousel-caption">
-						  <h1>광고1</h1>
-						</div>
-					  </div>
-					</div>
-					<div class="item">
-					  <img class="third-slide" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Third slide">
-					  <div class="container">
-						<div class="carousel-caption">
-						  <h1>광고2</h1>
+						  <h1 class="carousel-heading">2017년 국가기술자격검정 <br/> 기사,산업기사 시험일정</h1>
+						  <table class="table table-bordered text-center" id="elist-table">
+						  	<thead>
+						  		<tr>
+						  			<th>년도/회차</th>
+						  			<th>필기시험</th>
+						  			<th>실기시험</th>
+						  			<th>합격자발표</th>
+						  		</tr>
+						  	</thead>
+						  	<tbody>
+						  		<c:forEach items="${EList }" var="item">
+						  			<tr>
+							  			<td>${item.description }</td>
+							  			<td>${item.docExamDt }</td>
+							  			<td>${item.pracExamStartDt  } -<br> ${item.pracExamEndDt }</td>
+							  			<td>${item.pracPassDt  }</td>
+							  		</tr>
+						  		</c:forEach>
+						  		
+						  	</tbody>
+						  </table>
 						</div>
 					  </div>
 					</div>
 				  </div>
-				 <a class="left carousel-control" data-slide="prev" href="#gallery-carousel">
+				 <a class="left carousel-control" data-slide="prev" href="#main-image-slide">
 					<i class="fa fa-angle-left" aria-hidden="true"></i>
 					<span class="sr-only">Previous</span>
 				  </a>
-				  <a class="right carousel-control" data-slide="next" href="#gallery-carousel">
+				  <a class="right carousel-control" data-slide="next" href="#main-image-slide">
 					<i class="fa fa-angle-right" aria-hidden="true"></i>
 					<span class="sr-only">Next</span>
 				  </a>
@@ -162,7 +189,7 @@
 						</div>
 						<ul class="side-menu-list">
 							<c:forEach items="${userList }" var="user" varStatus="status">
-									<li class="menu-list-item"><a href="#"><span class='rank'>${status.index +1 }위</span>  <img src="${pageContext.request.contextPath }/image.do?id=${user.photo}" 
+									<li class="menu-list-item"><span class='rank'>${status.index +1 }위</span>  <a href="${pageContext.request.contextPath }/user/profilePage.do?email=${user.email }"><img src="${pageContext.request.contextPath }/image.do?id=${user.photo}" 
 											alt="" class="user-image circular-square" /><span class="user-grade">${user.gradeNm}</span> <strong class="user-name">${user.name }</strong></a>
 											<span class="pull-right <c:if test='${ status.index < 3 }'>red</c:if>">${user.point }점 </span>
 									</li>
@@ -191,19 +218,19 @@
 					
 				</section><!-- board-->
 				
-				<section id="news" class="section">
+		 <%--   <section id="contest" class="section">
 				<div class="section-header">
-					<h2 class="page-header text-center"><i class="fa fa-newspaper-o" aria-hidden="true"></i>관련 뉴스</h2>
+					<h2 class="page-header text-center"><i class="fa fa-bullhorn" aria-hidden="true"></i>공모전 정보</h2>
 				</div>
 				<div class="section-body">
 					<div class="row">
 						<div class="col-md-pull-1 col-md-10 col-md-push-1 col-sm-12 col-xs-12">
-							<%@ include file="news/newsList.jsp" %>	
+							<%@ include file="contest/contestList.jsp" %>	
 						</div>
 					</div>
-				</div>
+				</div> 
 					
 					
-				</section> <!-- news -->
+				</section> <!-- news --> --%>
 				
 <%@ include file="include/footer.jsp" %>
