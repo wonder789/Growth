@@ -1,6 +1,7 @@
 package com.growth.domain;
 
 import java.util.Collection;
+import java.util.List;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.AuthorityUtils;
@@ -20,6 +21,8 @@ public class UserVO implements UserDetails{
 	
 	private String name;
 	
+	private List<String> tag;
+	
 	@JsonIgnore
 	private MultipartFile file;
 	
@@ -37,10 +40,80 @@ public class UserVO implements UserDetails{
 	
 	private String activity;
 	
+	private String orgIntroText;
+	
+	private String orgGoal;
+	
+	private String orgHistory;
+	
+	private String introText;
+	
+	private String goal;
+	
+	private String history;
+	
 	private int point;
 	
 	private int mPoint;
+
 	
+	
+	public String getOrgGoal() {
+		return orgGoal;
+	}
+
+	public void setOrgGoal(String orgGoal) {
+		this.orgGoal = orgGoal;
+	}
+
+	public String getOrgHistory() {
+		return orgHistory;
+	}
+
+	public void setOrgHistory(String orgHistory) {
+		this.orgHistory = orgHistory;
+	}
+
+	public String getOrgIntroText() {
+		return orgIntroText;
+	}
+
+	public void setOrgIntroText(String orgIntroText) {
+		this.orgIntroText = orgIntroText;
+	}
+
+	public List<String> getTag() {
+		return tag;
+	}
+
+	public void setTag(List<String> tag) {
+		this.tag = tag;
+	}
+
+	public String getIntroText() {
+		return introText;
+	}
+
+	public void setIntroText(String introText) {
+		this.introText = introText;
+	}
+
+	public String getGoal() {
+		return goal;
+	}
+
+	public void setGoal(String goal) {
+		this.goal = goal;
+	}
+
+	public String getHistory() {
+		return history;
+	}
+
+	public void setHistory(String history) {
+		this.history = history;
+	}
+
 	public int getmPoint() {
 		return mPoint;
 	}

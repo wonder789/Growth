@@ -69,17 +69,46 @@
 			WHERE 1=1
 			AND EMAIL = #{email}
 	</update>
+	
+	<select id="selectUserTags" parameterType="userVO" resultType="String">
+		SELECT TAG_NAME FROM
+		USER_TAG
+		WHERE USER_ID = #{email}
+	</select>
+	
+	<insert id="insertUserTags" parameterType="hashmap">
+		INSERT INTO USER_TAG(
+			USER_ID,
+			TAG_NAME
+		) VALUES 
+		<foreach collection="tagList" item="item" separator=" , ">
+			( #{userId} , #{item} )
+		</foreach>
+		
+	</insert>
+	
+	<delete id="deleteUserTags" parameterType="userVO">
+		DELETE FROM USER_TAG
+		WHERE USER_ID = #{email}
+	</delete>
     
     <select id="findUser" parameterType="userVO" resultType="userVO">
     	SELECT EMAIL,
     		   PASSWORD,
     		   DEPARTMENT,
     		   GRADE,
+    		   fnGetCodeNm(GRADE) gradeNm,
     		   NAME,
     		   PHOTO,
     		   POINT,
     		   TYPE,
     		   AUTH,
+    		   INTRO_TEXT as ORG_INTRO_TEXT,
+    		   HISTORY as ORG_HISTORY,
+    		   GOAL as ORG_GOAL,
+    		   REPLACE(INTRO_TEXT, '\r\n', '<![CDATA[<br />]]>')INTRO_TEXT,
+    		   REPLACE(HISTORY, '\r\n', '<![CDATA[<br />]]>')HISTORY,
+    		   REPLACE(GOAL, '\r\n', '<![CDATA[<br />]]>')GOAL,
     		   REG_DATE,
     		   MOD_DATE
     	FROM USERS
@@ -88,6 +117,14 @@
     		AND EMAIL = #{email}
     	</if>
     </select>
+    
+    <update id="updateUserProfile" parameterType="userVO" >
+    	UPDATE USERS SET INTRO_TEXT = #{introText},
+    					 HISTORY = #{history},
+    					 GOAL    = #{goal}
+    	WHERE EMAIL = #{email}
+    
+    </update>
     
     <select id="selectUserList" parameterType="userVO" resultType="userVO">
     	SELECT * FROM (
@@ -106,5 +143,124 @@
     	) T 
     	LIMIT 0,8
     </select>
+    
+    <insert id="insertUserComment" parameterType="userCommentVO">
+    	INSERT INTO USER_COMMENT(
+    		USER_ID,
+    		CONTENT,
+    		WRITER_ID,
+    		GRP_COMMENT_ID,
+    		P_COMMENT_ID,
+    		GRP_ORDER,
+    		LEVEL,
+    		REG_DATE,
+    		MOD_DATE
+    	) VALUES (
+    		#{userId},
+    		#{content},
+    		#{writerId},
+			<if test="pCommentId == -1">
+			   (
+			   		SELECT IF(MAX(GRP_COMMENT_ID) IS NULL , 0 , MAX(GRP_COMMENT_ID)) + 1
+			   		FROM USER_COMMENT A 
+			   ),
+			   null,
+			   1,
+			   1,
+			</if>
+			<if test="pCommentId != -1">
+				#{grpCommentId},
+				#{pCommentId},		
+				( 
+					SELECT IF( COUNT(GRP_ORDER) IS NULL, 0 , COUNT(GRP_ORDER)) + 1
+					FROM USER_COMMENT B
+					WHERE GRP_COMMENT_ID = #{grpCommentId}
+				),
+				( 
+					SELECT LEVEL + 1
+					FROM USER_COMMENT A
+					WHERE COMMENT_ID = #{pCommentId} 
+				) ,
+			</if>
+    		now(),
+    		now()
+    	)
+    </insert>
+    
+    
+    <insert id="insertUserTimeline" parameterType="userTimelineVO">
+    	INSERT INTO USER_TIMELINE(
+    		USER_ID,
+    		TITLE,
+    		CONTENT,
+    		THUMBNAIL,
+    		REG_DATE,
+    		MOD_DATE,
+    		COMPLETE_DATE
+    	) VALUES (
+			#{userId},
+			#{title},
+			#{content},
+			<if test="thumbnail != -1">
+				#{thumbnail}
+			</if>    		
+    		<if test="thumbnail == -1">
+				null
+			</if>,
+			now(),
+			now(),
+			#{completeDate}
+    	)    	
+    
+    </insert>
+    
+    <select id="selectUserTimelineYear" parameterType="userTimelineVO" resultType="string">
+    	SELECT YEAR(COMPLETE_DATE)
+		FROM USER_TIMELINE
+		WHERE USER_ID=#{userId}
+		GROUP BY YEAR(COMPLETE_DATE)
+		ORDER BY YEAR(COMPLETE_DATE) DESC
+    </select>
+    
+    <select id="selectUserTimelineList" parameterType="userTimelineVO" resultType="userTimelineVO">
+    	SELECT TIMELINE_ID,
+			    USER_ID,
+			    REPLACE(TITLE, '\r\n', '<![CDATA[<br />]]>') TITLE,
+		        CONTENT,
+		        THUMBNAIL,
+		        REG_DATE,
+		        MOD_DATE,
+		        DATE_FORMAT(COMPLETE_DATE,'%m월 %d일') COMPLETE_DATE
+		FROM USER_TIMELINE
+		WHERE USER_ID = #{userId}
+		AND YEAR(COMPLETE_DATE) = #{searchYear}
+		ORDER BY COMPLETE_DATE DESC
+    </select>
+    
+    <update id="updateGrpCommentId" parameterType="userCommentVO">
+    	UPDATE USER_COMMENT 
+    		SET GRP_COMMENT_ID = #{commentId}
+    	WHERE COMMENT_ID = #{commentId}
+    </update>
+    
+    <select id="selectUserCommentList" parameterType="userCommentVO" resultType="userCommentVO">
+    	SELECT A.COMMENT_ID,
+    		   A.USER_ID,
+    		   A.CONTENT,
+    		   A.WRITER_ID,
+    		   B.PHOTO WRITER_PHOTO,
+    		   CONCAT(fnGetCodeNm(B.GRADE), ' ', B.NAME ) WRITER_NAME,
+    		   A.GRP_COMMENT_ID,
+    		   A.GRP_ORDER,
+    		   A.LEVEL,
+    		   A.REG_DATE,
+    		   A.MOD_DATE
+    	FROM USER_COMMENT A
+    	INNER JOIN USERS B
+    	ON A.WRITER_ID = B.EMAIL
+    	WHERE USER_ID = #{userId}
+    	ORDER BY A.GRP_COMMENT_ID DESC , A.GRP_ORDER ASC
+    </select>
+    
 </mapper>
 
