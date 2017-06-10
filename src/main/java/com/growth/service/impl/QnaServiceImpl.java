@@ -99,7 +99,15 @@ public class QnaServiceImpl implements QnaService {
 	
 	@Override
 	public void insertQnaComment(QnaVO qnaVO) throws Exception {
+		UserVO parameter = new UserVO();
 		qnaDao.insertQnaComment(qnaVO);
+		parameter = new UserVO();
+		parameter.setActivity(Const.QNA_CHOOSED);
+		CodeVO codeVO = codeDao.selectCodeByCodeId(Const.COMMENT);
+		parameter.setPoint(Integer.parseInt(codeVO.getCodeComment1()));
+		parameter.setEmail(qnaVO.getWriterId());
+		userDao.insertUserPointHistory(parameter);
+		userDao.updateUserPoint(qnaVO.getWriterId());
 	}
 
 	@Override

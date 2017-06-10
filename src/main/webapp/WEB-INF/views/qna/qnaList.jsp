@@ -22,8 +22,10 @@
 						<span class="reg-date"><i class="fa fa-clock-o"></i>${qna.regDate}</span>
 					</p>
 					<div class="qna-card-profile">
-						<img src="${pageContext.request.contextPath }/image.do?id=${qna.photo}" alt="" class="circular-square user-image" />
-						<span class="user-name">${qna.name}</span>					
+						<a href="${pageContext.request.contextPath }/user/profilePage.do?email=${qna.writerId}">
+							<img src="${pageContext.request.contextPath }/image.do?id=${qna.photo}" alt="" class="circular-square user-image" />
+							<span class="user-name">${qna.name}</span>					
+						</a>
 					</div>
 			</div>
 			</div>

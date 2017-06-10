@@ -1,20 +1,31 @@
 .navbar-default .navbar-brand, .navbar-default .navbar-link, .navbar-default .btn-link{
-    color: #1a5d4c;
+    color: #4f7302;
     font-weight: bold;
     transition:0.3s;
 }
 
 .navbar-default .navbar-text, .navbar-default .navbar-nav > li > a {
-	color: #1a5d4c;
+	color: #4f7302;
     font-weight: bold;
     transition:0.3s;
 }
 
 .navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:hover, .navbar-default .navbar-nav > .active > a:focus{
 	color: white;
-    background-color: #1a5d4c;
+    background-color: #4f7302;
 }
 
 .navbar-default .navbar-text, .navbar-default .navbar-nav > li > a i.fa{
 	margin-right:4px;
+}
+.navbar-default{
+	
+	background-color:#c0e477;
+	border-color:#c0e477;
+}
+@media screen and (min-width: 768px){
+.carousel-caption {
+    right: 15%;
+    left: 15%;
+    padding-bottom: 30px;
 }

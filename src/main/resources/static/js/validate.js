@@ -20,3 +20,11 @@ function emailcheck(strValue)
 
 }
 
+/*
+ * 날짜포맷에 맞는지 검사
+ */
+function isDateFormat(d) {
+    var df = /[0-9]{4}-[0-9]{2}-[0-9]{2}/;
+    return d.match(df);
+}
+

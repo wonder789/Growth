@@ -12,16 +12,25 @@ body{
     margin-right: 6px;
     color: #434a54;
 }
+.logo{
+	
+	display:inline-block;
+	width:200px;
+	height:50px;
+	background-position-y:5px !important;
+}
 .logo, .logo-header{
-    background-image: url(../img/logo_default.png);
+    background-image: url(../img/header_logo.png);
     background-repeat: no-repeat;
-    padding-left: 40px;
-    background-position-y: 14px;
 }
 .logo-header{
-	background-position-x:43%;
+    display: block;
+    height: 40px;
+    margin: 14px;
+    padding-left: 0;
+	background-position-x:48%;
 	background-position-y:0;
-	margin: 25px 0;
+	margin: 15px 0;
 }
 .logo-desc-heading{
     padding-bottom: 15px;
@@ -29,10 +38,6 @@ body{
     width: 80%;
     margin: 0 auto;
     margin-bottom: 20px;
-}
-.logo:hover{
-	background-image:url(../img/logo_hover.png);
-	
 }
 .red{
 	color:red;
@@ -92,6 +97,10 @@ body{
 	height:20px;
 	display:inline-block;
 	margin-right:10px;
+}
+.user-img-sm{
+	width:50px;
+	height:50px;
 }
 
 footer{
@@ -329,7 +338,10 @@ ul.link-list li a {
 		background:#3bafda;
 		color:white;
 	}
-
+	.news-img{
+		width: 85px;
+   		height: 85px;
+	}
 	/* Large devices (large desktops, 1200px and up) */
 	@media (min-width: 1200px ) {
 		/* fluid 5 columns */

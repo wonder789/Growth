@@ -60,10 +60,7 @@
 		padding-top:10px;
 		border-top:1px solid #ddd;
 	}
-	.user-img-sm{
-		width:50px;
-		height:50px;
-	}
+	
 		/*태블릿 및 PC*/
 	@media( max-width : 767px ){
 	     .right-panel{

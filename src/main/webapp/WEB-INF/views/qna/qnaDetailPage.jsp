@@ -140,7 +140,8 @@
 					success : function( result ){
 						alert(result.message);
 						if( result.status == 200 ){
-							loadQnaCommentList();						
+							loadQnaCommentList();		
+							$('#comment').val('');
 						}
 					}
 				});

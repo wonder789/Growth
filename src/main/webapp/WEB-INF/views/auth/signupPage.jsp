@@ -36,7 +36,7 @@
 			success : function(result){
 				if( result.status == 200 ){
 					alert(result.message);		
-					location.href="${pageContext.request.contextPath}";
+					location.href="${pageContext.request.contextPath}/auth/loginPage.do";
 				} else if ( result.status == 400 ){
 					alert(result.message);
 				} else if( result.status == 500 ){
@@ -150,7 +150,7 @@
 			<div class="col-md-6 col-md-pull-3 col-md-push-3 col-sm-8 col-sm-pull-2 col-sm-push-2">
 				<form class="form-horizontal well" id="signup-form">
 				  <div class="form-header">
-				  	<h4 class="logo-header text-center">Growth</h4>
+				  	<span class="logo-header text-center"></span>
 				  	<h5 class="text-center logo-desc-heading">군 장병 자기계발 플랫폼 </h5>
 				  </div>
 				  <div class="form-group">
@@ -243,7 +243,7 @@
 				  </div>
 				  <div class="form-group">
 				    <p class="text-center">
-				    	<button class="btn btn-danger" id="signup-btn" ><i class="fa fa-sign-in"></i>회원가입</button>
+				    	<button type="button" class="btn btn-danger" id="signup-btn" ><i class="fa fa-sign-in"></i>회원가입</button>
 				    </p>
 				  </div>
 			</form>

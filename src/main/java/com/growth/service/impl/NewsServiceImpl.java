@@ -18,20 +18,35 @@ public class NewsServiceImpl implements NewsService {
 
 	@Override
 	public List<NewsVO> getNewsList(String searchQuery, int displayCount) throws Exception{
-		Document doc = Jsoup.connect("http://news.naver.com/main/search/search.nhn?display=" + displayCount
-				+"&page=1&query=" + URLEncoder.encode(searchQuery,"ms949") ).get();
-		Elements listItems = doc.select(".srch_lst > li");
+		Document doc = Jsoup.connect("http://kookbang.dema.mil.kr/kookbangWeb/globalSearch.do")
+				.data("category","NARMY")
+				.data("searched_kwd","자기계발")
+				.data("pageNum","1")
+				.data("searchNum","15")
+				.data("sort","d")
+				.data("kokbangCheck","listAll")
+				.data("opiniunCheck","listAll")
+				.data("planCheck","listAll")
+				.data("societyCheck","listAll")
+				.data("sportsCheck","listAll")
+				.data("armyCheck","listAll")
+				.data("photoCheck","listAll")
+				.data("kwd","자기계발")
+				.post();
+		Elements listItems = doc.select("dl.searchContents");
 		Element  thumbnail = null;
 		NewsVO   newsVO = null;
 		List<NewsVO> results = new ArrayList<NewsVO>();
 		
 		for( Element item : listItems ){
 			newsVO = new NewsVO();
-			newsVO.setImgUrl(item.select("img").attr("src"));
-			newsVO.setTitle(item.select(".ct > a").text());
-			newsVO.setLink(item.select(".ct > a").attr("href"));
-			newsVO.setRegDate(item.select(".time").first().text());
-			newsVO.setContent(item.select(".dsc").text().trim());
+			if( !item.select("img.thumbNail").attr("src").equals("") ){
+				newsVO.setImgUrl("http://kookbang.dema.mil.kr" + item.select("img.thumbNail").attr("src"));
+			}
+			newsVO.setTitle(item.select("dt.tit").text());
+			newsVO.setLink(item.select("dt.tit > a").attr("href"));
+			newsVO.setRegDate(item.select("dd.day").text());
+			newsVO.setContent(item.select("dd.text").text().trim());
 			results.add(newsVO);
 		}
 		return results;

@@ -5,7 +5,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.growth.service.ContestService;
 import com.growth.service.NewsService;
+import com.growth.service.OpenApiService;
 import com.growth.service.PostService;
 import com.growth.service.UserService;
 
@@ -22,10 +24,17 @@ public class IndexController {
 	@Autowired
 	private NewsService newsService;
 	
+	@Autowired
+	private ContestService contestService;
+	
+	@Autowired
+	private OpenApiService openApiService;
+	
     @RequestMapping
     public String index(ModelMap model) throws Exception {
     	model.addAttribute("userList", userService.selectUserList(null));
-    	model.addAttribute("newsList", newsService.getNewsList("군 장병 자기계발",5));
+    	model.addAttribute("contestList", contestService.getContestList());
+    	model.addAttribute("EList",openApiService.getEList());
         return "index";
     }
 }

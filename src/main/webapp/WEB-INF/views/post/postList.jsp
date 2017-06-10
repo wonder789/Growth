@@ -26,8 +26,10 @@
 						<span class="reg-date"><i class="fa fa-clock-o"></i>${post.regDate}</span>
 					</p>
 					<div class="card-profile">
-						<img src="${pageContext.request.contextPath }/image.do?id=${post.photo}" alt="" class="circular-square user-image" />
-						<span class="user-name">${post.name}</span>					
+						<a href="${pageContext.request.contextPath }/user/profilePage.do?email=${post.writerId }">
+							<img src="${pageContext.request.contextPath }/image.do?id=${post.photo}" alt="" class="circular-square user-image" />
+							<span class="user-name">${post.name}</span>					
+						</a>
 					</div>
 			</div>
 		</div>

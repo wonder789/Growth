@@ -38,3 +38,4 @@
 <script src="${pageContext.request.contextPath}/js/masonry.pkgd.js"></script>
 <script src="${pageContext.request.contextPath}/js/imagesloaded.pkgd.min.js"></script>
 <script src="${pageContext.request.contextPath}/js/common.js"></script>
+<script src="${pageContext.request.contextPath}/js/jquery.lazyload.js"></script>

@@ -10,15 +10,15 @@
 			<span class="icon-bar"></span>
 			<span class="icon-bar"></span>
 		  </button>
-		  <a class="navbar-brand logo" href="/" >Growth</a>
+		  <a class="navbar-brand logo" href="/" ></a>
 		</div>
 		<div id="navbar" class="navbar-collapse collapse navbar-right">
 		  <ul class="nav navbar-nav">
 		  	<li <c:if test="${ currentPage eq 'post' }">class="active"</c:if> ><a href="${pageContext.request.contextPath}/post/postPage.do">
 		  			<i class="fa fa-bookmark" aria-hidden="true"></i>포스트</a></li>	
-			<li <c:if test="${ currentPage eq 'news' }">class="active"</c:if> ><a href="${pageContext.request.contextPath}/news/newsPage.do"><i class="fa fa-newspaper-o" aria-hidden="true"></i>뉴스</a></li>
 			<li <c:if test="${ currentPage eq 'qna' }">class="active"</c:if> ><a href="/qna/qnaPage.do"><i class="fa fa-question" aria-hidden="true"></i>질의응답</a></li>
-			<li <c:if test="${ currentPage eq 'notice' }">class="active"</c:if> ><a href="/notice/noticePage.do"<i class="fa fa-bullhorn" aria-hidden="true"></i>>공지사항</a></li>
+			<li <c:if test="${ currentPage eq 'news' }">class="active"</c:if> ><a href="${pageContext.request.contextPath}/news/newsPage.do"><i class="fa fa-newspaper-o" aria-hidden="true"></i>뉴스</a></li>
+			<li <c:if test="${ currentPage eq 'contest' }">class="active"</c:if> ><a href="/contest/contestPage.do"<i class="fa fa-bullhorn" aria-hidden="true"></i>>공모전</a></li>
 			<sec:authorize access="isAnonymous()">
 				<li <c:if test="${ currentPage eq 'login' }">class="active"</c:if>><a href="${pageContext.request.contextPath}/auth/loginPage.do">
 				<i class="fa fa-key" aria-hidden="true"></i>로그인</a></li>
@@ -26,7 +26,7 @@
 					<i class="fa fa-sign-in" aria-hidden="true"></i>회원가입</a></li>	
 			</sec:authorize>
 			<sec:authorize access="isAuthenticated()">
-				<li><a href="${pageContext.request.contextPath}/auth/mypage.do">
+				<li><a href="${pageContext.request.contextPath}/user/profilePage.do">
 					<img class="circular-square user-image" 
 						 src="${pageContext.request.contextPath}/image.do?id=<sec:authentication property='principal.photo'/>" />
 		  <sec:authentication property="principal.name"/></a></li>

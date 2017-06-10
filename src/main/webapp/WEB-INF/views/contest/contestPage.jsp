@@ -5,7 +5,7 @@
 <head>
 <%@ include file="../include/headTag.jsp" %>
 <style type="text/css">
-.news-wrap{
+.contest-wrap{
 	border-radius:10px !important;
     /* margin: -1px 10px; */
     margin-left: 36px;
@@ -13,25 +13,18 @@
 }
 
 </style>
-<script>
-$(document).ready(function(){
-	$(".news-img").lazyload({
-	    effect : "fadeIn"       //효과
-	});
-});
-</script>
 </head>
 <body>
 <%@ include file="../include/header.jsp" %>
 <section id="news" class="section">
 	<div class="section-header">
-		<h2 class="page-header"><i class="fa fa-newspaper-o" aria-hidden="true"></i>관련 뉴스</h2>
-		<span class="help-block"><i class="fa fa-share-alt"></i>자기계발 관련 최신 뉴스들을 열람해보세요</span>
+		<h2 class="page-header"><i class="fa fa-newspaper-o" aria-hidden="true"></i>공모전 정보</h2>
+		<span class="help-block"><i class="fa fa-share-alt"></i>군인 공모전  정보들을 열람해보세요</span>
 	</div>
 	<div class="section-body">
 		<div class="row">
-			<div class="col-md-11 col-sm-12 col-xs-12 well news-wrap">
-				<%@ include file="../news/newsList.jsp" %>	
+			<div class="col-md-11 col-sm-12 col-xs-12 well contest-wrap">
+				<%@ include file="../contest/contestList.jsp" %>	
 			</div>
 		</div>
 	</div>

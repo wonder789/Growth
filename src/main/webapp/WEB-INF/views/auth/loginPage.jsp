@@ -23,7 +23,7 @@
 			<div class="col-md-6 col-md-pull-3 col-md-push-3 col-sm-8 col-sm-pull-2 col-sm-push-2">
 				<form class="form-horizontal well" action="/auth/login.do" method="POST" id="login-form" name='login_form'>
 				  <div class="form-header">
-				  	<h4 class="logo-header text-center">Growth</h4>
+				  	<span class="logo-header text-center"></span>
 				  	<h5 class="text-center logo-desc-heading">군 장병 자기계발 플랫폼 </h5>
 				  </div>
 				  <div class="form-group">
