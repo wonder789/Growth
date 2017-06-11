@@ -18,7 +18,7 @@
 <%@ include file="../include/header.jsp" %>
 <section id="news" class="section">
 	<div class="section-header">
-		<h2 class="page-header"><i class="fa fa-newspaper-o" aria-hidden="true"></i>공모전 정보</h2>
+		<h2 class="page-header"><i class="fa fa-bullhorn" aria-hidden="true"></i>공모전 정보</h2>
 		<span class="help-block"><i class="fa fa-share-alt"></i>군인 공모전  정보들을 열람해보세요</span>
 	</div>
 	<div class="section-body">

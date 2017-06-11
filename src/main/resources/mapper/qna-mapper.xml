@@ -136,7 +136,9 @@
 			  CONCAT(fnGetCodeNm(B.GRADE)," ",B.NAME) NAME,
 			  A.REG_DATE,
 			  A.CHOOSE_YN,
-			  A.MOD_DATE
+			  A.MOD_DATE,
+			  ( SELECT COUNT(1) FROM QNA_COMMENT C 
+			  	WHERE QNA_ID = #{qnaId} ) chooseCount
 		FROM QNA_COMMENT A 
 			INNER JOIN USERS B
 		ON A.WRITER_ID = B.EMAIL

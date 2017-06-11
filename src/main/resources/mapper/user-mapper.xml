@@ -226,7 +226,7 @@
     	SELECT TIMELINE_ID,
 			    USER_ID,
 			    REPLACE(TITLE, '\r\n', '<![CDATA[<br />]]>') TITLE,
-		        CONTENT,
+		         REPLACE(CONTENT, '\r\n', '<![CDATA[<br />]]>') CONTENT,
 		        THUMBNAIL,
 		        REG_DATE,
 		        MOD_DATE,

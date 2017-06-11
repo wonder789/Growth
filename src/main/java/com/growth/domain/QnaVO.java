@@ -45,8 +45,18 @@ public class QnaVO {
 	
 	private int commentId;
 	
+	private int chooseCount;
 	
 	
+	
+	public int getChooseCount() {
+		return chooseCount;
+	}
+
+	public void setChooseCount(int chooseCount) {
+		this.chooseCount = chooseCount;
+	}
+
 	public int getCommentId() {
 		return commentId;
 	}

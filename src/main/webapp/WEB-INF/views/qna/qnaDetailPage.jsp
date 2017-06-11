@@ -228,11 +228,11 @@
 				</div>
 				<div class="comment-wrap">
 					<div class="comment-header">
-						<h5 class="comment-heading"><i class="fa fa-pencil"></i>댓글 작성</h5>
+						<h5 class="comment-heading"><i class="fa fa-pencil"></i>답변 작성</h5>
 					</div>
 					<div class="comment-body">
 						<form>
-							<textarea name="comment" id="comment" class="form-control" placeholder="댓글을 작성해보세요"></textarea>
+							<textarea name="comment" id="comment" class="form-control" placeholder="답변을 작성해보세요"></textarea>
 						</form>
 					</div>
 					<div class="comment-footer">

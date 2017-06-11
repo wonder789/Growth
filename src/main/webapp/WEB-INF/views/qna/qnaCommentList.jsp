@@ -21,7 +21,8 @@
 			<sec:authorize access="isAuthenticated()">
 				<c:if test="${ qnaInfo.writerId eq currentUserId 
 							and qnaInfo.writerId ne comment.writerId
-							and comment.chooseYn eq 'N' }">
+							and comment.chooseYn eq 'N'
+							and chooseCount < 1 }">
 					<p class="text-right choose-wrap">
 						<button class='btn btn-success btn-choose' id="btn" ><i class="fa fa-check"></i>채택하기</button>
 						<form class="choose-form">

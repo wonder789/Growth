@@ -43,7 +43,7 @@ body{
 	color:red;
 }
 .section{
-	margin-top:50px;
+	margin-top:10px;
 	
 }
 .carousel{
@@ -362,7 +362,7 @@ ul.link-list li a {
 		 }
 	}
 		/*태블릿 및 PC*/
-	@media( max-width : 767px ){
+	@media( max-width : 520px ){
 	      /* fluid 5 columns */
 		.card-sizer,
 		.card-wrap {
@@ -372,6 +372,16 @@ ul.link-list li a {
 		 	margin-left:0 !important;
 		 }
 	}
+	
+		/*태블릿과 PC 중간 구역*/
+	@media( min-width : 520px ) and (max-width:767px){
+	    /* fluid 5 columns */
+		.card-sizer,
+		.card-wrap {
+			 width: 47% !important;
+		 }
+	}
+	
 	/*태블릿과 PC 중간 구역*/
 	@media( min-width : 767px ) and (max-width:992px){
 	    /* fluid 5 columns */

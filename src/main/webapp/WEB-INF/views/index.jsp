@@ -63,7 +63,7 @@
 		loadPostList();
 		
 		$('.carousel').carousel({
-		    interval: false
+		    interval: 5000
 		}); 
 		$(".news-img").lazyload({
 		    effect : "fadeIn"       //효과
