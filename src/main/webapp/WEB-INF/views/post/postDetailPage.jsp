@@ -54,6 +54,8 @@
 	}
 	.comment-list{
 	    list-style: none;
+	    padding-left:0;
+	    
 	}
 	.comment-list-item{
 		margin-top:20px;
@@ -68,13 +70,7 @@
 			right:0;
 		}
 	}
-	.media-left{
-	    margin-bottom: 10px;
-	}
-	.media-body{
-		display:block;
-		width:100%;
-	}
+	
 </style>
 <script type="text/javascript">
 	$( document ).ready(function(){
@@ -166,7 +162,7 @@
 	<div class="section-header">
 		<h4 class="page-header"><i class="fa fa-bookmark" aria-hidden="true"></i>${ post.title}</h4>
 		<div class="section-header-right">
-			<a href="${pageContext.request.contextPath }/post/postPage.do" id="refresh-btn" class="btn btn-primary" >
+			<a href="${pageContext.request.contextPath }/post/postPage.do" id="refresh-btn" class="btn btn-primary visible-md visible-lg" >
 			<i class="fa fa-list"></i>목록으로</a>
 		</div>
 	</div>
@@ -177,10 +173,10 @@
 			</div>
 			<div class="post-footer">
 				<div class="user-profile media">
-					<a href="#" class="pull-left">
+					<a href="#" class="profile-media-left">
 						<img src="${pageContext.request.contextPath }/image.do?id=${post.photo}" alt="" class="circular-square"/>
 					</a>
-					<div class="media-body">
+					<div class="media-body profile-media">
 						<h5 class="user-name">${post.name }</h5>
 						<p class="help-block">
 							<span class="department">
@@ -201,21 +197,28 @@
 						</sec:authorize>
 					</div>
 				</div>
+				
 				<div class="comment-wrap">
-					<div class="comment-header">
-						<h5 class="comment-heading"><i class="fa fa-pencil"></i>댓글 작성</h5>
-					</div>
-					<div class="comment-body">
-						<form>
-							<textarea name="comment" id="comment" class="form-control" placeholder="댓글을 작성해보세요"></textarea>
-						</form>
-					</div>
-					<div class="comment-footer">
-						<sec:authorize access="isAuthenticated()">
-							<button class="btn btn-danger" id="btn-comment-write"><i class="fa fa-save"></i>작성완료</button>
-						</sec:authorize>
-					</div>
+					<sec:authorize access="isAuthenticated()">
+						<div class="comment-header">
+							<h5 class="comment-heading"><i class="fa fa-pencil"></i>댓글 작성</h5>
+						</div>
+						<div class="comment-body">
+							<form>
+								<textarea name="comment" id="comment" class="form-control" placeholder="댓글을 작성해보세요"></textarea>
+							</form>
+						</div>
+						<div class="comment-footer">
+								<button class="btn btn-danger" id="btn-comment-write"><i class="fa fa-save"></i>작성완료</button>
+						</div>
+					</sec:authorize>
+					<sec:authorize access="!isAuthenticated()">
+						<span class="help-block">
+							※ 로그인 하시면 댓글을 작성하실 수 있습니다. 
+						</span>
+					</sec:authorize>
 				</div>
+				
 				<ul class="comment-list">
 					
 				</ul>

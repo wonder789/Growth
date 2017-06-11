@@ -130,7 +130,7 @@
 	<select id="selectQnaComments" parameterType="qnaVO" resultType="qnaVO">
 		SELECT A.QNA_ID,
 		       A.COMMENT_ID,
-			   A.CONTENT,
+			   REPLACE(A.CONTENT, '\n', '<![CDATA[<br />]]>') CONTENT,
 			  A.WRITER_ID,
 			  B.PHOTO PHOTO,
 			  CONCAT(fnGetCodeNm(B.GRADE)," ",B.NAME) NAME,

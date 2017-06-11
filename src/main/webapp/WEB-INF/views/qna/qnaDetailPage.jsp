@@ -190,7 +190,7 @@
 	<div class="section-header">
 		<h4 class="page-header"><i class="fa fa-question" aria-hidden="true"></i>${ qna.title}</h4>
 		<div class="section-header-right">
-			<a href="${pageContext.request.contextPath }/qna/qnaPage.do" id="refresh-btn" class="btn btn-primary" >
+			<a href="${pageContext.request.contextPath }/qna/qnaPage.do" id="refresh-btn" class="btn btn-primary visible-md visible-lg" >
 			<i class="fa fa-list"></i>목록으로</a>
 		</div>
 	</div>
@@ -201,10 +201,10 @@
 			</div>
 			<div class="qna-footer">
 				<div class="user-profile media">
-					<a href="#" class="pull-left">
+					<a href="#" class="profile-media-left">
 						<img src="${pageContext.request.contextPath }/image.do?id=${qna.photo}" alt="" class="circular-square"/>
 					</a>
-					<div class="media-body">
+					<div class="media-body profile-media">
 						<h5 class="user-name">${qna.name }</h5>
 						<p class="help-block">
 							<span class="department">
@@ -214,7 +214,7 @@
 								<i class="fa fa-clock-o"></i> ${qna.regDate }
 							</span><br/>
 							<span class="hit-cnt"><i class="fa fa-eye"></i>조회수 ${qna.hitCnt }</span>
-							<span class="like-cnt"><i class="fa fa-heart"></i>좋아요 ${qna.likeCnt }</span>
+							<span class="like-cnt"><i class="fa fa-heart"></i>좋아요 ${qna.likeCnt }</span><br />
 							<span class="comment-cnt"><i class="fa fa-comment"></i>댓글수  ${qna.commentCnt }</span>
 							<span class="bet-point"><i class="fa fa-gift" aria-hidden="true"></i>채택시 포인트  ${qna.betPoint }P</span>
 						</p>	
@@ -227,19 +227,26 @@
 					</div>
 				</div>
 				<div class="comment-wrap">
-					<div class="comment-header">
-						<h5 class="comment-heading"><i class="fa fa-pencil"></i>답변 작성</h5>
-					</div>
-					<div class="comment-body">
-						<form>
-							<textarea name="comment" id="comment" class="form-control" placeholder="답변을 작성해보세요"></textarea>
-						</form>
-					</div>
-					<div class="comment-footer">
-						<sec:authorize access="isAuthenticated()">
-							<button class="btn btn-danger" id="btn-comment-write"><i class="fa fa-save"></i>작성완료</button>
-						</sec:authorize>
-					</div>
+					<sec:authorize access="isAuthenticated()">
+						<div class="comment-header">
+							<h5 class="comment-heading"><i class="fa fa-pencil"></i>답변 작성</h5>
+						</div>
+						<div class="comment-body">
+							<form>
+								<textarea name="comment" id="comment" class="form-control" placeholder="답변을 작성해보세요"></textarea>
+							</form>
+						</div>
+						<div class="comment-footer">
+							<sec:authorize access="isAuthenticated()">
+								<button class="btn btn-danger" id="btn-comment-write"><i class="fa fa-save"></i>작성완료</button>
+							</sec:authorize>
+						</div>
+					</sec:authorize>
+					<sec:authorize access="!isAuthenticated()">
+						<span class="help-block">
+							※ 로그인 하시면 댓글을 작성하실 수 있습니다. 
+						</span>
+					</sec:authorize>
 				</div>
 				<ul class="comment-list">
 					

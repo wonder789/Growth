@@ -16,7 +16,7 @@
 			<span class="reg-date">
 				<i class="fa fa-clock-o"></i> ${comment.regDate }
 			</span><br/>
-			<pre>${comment.content }</pre>
+			<p class="comment-content">${comment.content }</p>
 			
 			<sec:authorize access="isAuthenticated()">
 				<c:if test="${ qnaInfo.writerId eq currentUserId 

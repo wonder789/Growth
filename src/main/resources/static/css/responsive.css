@@ -1,0 +1,46 @@
+/* 작은 핸드폰 */
+@media (max-width: 480px ){
+	
+}
+/* 큰 핸드폰 */
+@media (min-width:480px) and ( max-width:767px){
+	
+}
+
+/*폰*/
+@media (max-width: 768px) { 
+ 	.carousel-caption{
+ 		bottom:150px;
+ 	}
+ 	.profile-media-left > img{
+ 		width: 50px !important;
+    	height: 50px !important;
+ 	}
+ 	.profile-media{
+ 		padding-left:45px !important;
+ 	}
+ 	.post-wrap,.qna-wrap{
+ 		padding:10px !important;
+ 		margin:10px 0 !important;
+ 	}
+ 	.timeline dl dd .time{
+ 		top:10px !important;
+ 	}
+ 	
+ 	.news-wrap,
+	 .contest-wrap{
+	 	margin-left:0 !important;
+	 }
+}
+/* 태블릿 */
+@media (min-width: 768px ) and (max-width: 992px) {
+
+}
+/*중간크기 모니터*/
+@media (min-width: 992px ) and (max-width: 1200px ) {
+
+}
+/*큰 모니터*/
+@media (min-width: 1200px ) {
+
+}

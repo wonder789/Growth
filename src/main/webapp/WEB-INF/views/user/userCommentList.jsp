@@ -19,7 +19,7 @@
 				<i class="fa fa-clock-o">${comment.regDate }</i>
 			</li>
 			<li>
-				<pre class="comment-content">${comment.content }</pre>
+				<p class="comment-content">${comment.content }</p>
 			</li>
 		</ul>
 		<div class="comment-footer text-right">

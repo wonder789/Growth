@@ -18,6 +18,7 @@
 <link href="${pageContext.request.contextPath}/css/bootstrap-theme.css" rel="stylesheet">
 
 <link href="${pageContext.request.contextPath}/css/common.css" rel="stylesheet">   
+<link href="${pageContext.request.contextPath}/css/responsive.css" rel="stylesheet">   
 <link href="${pageContext.request.contextPath}/css/font-awesome.css" rel="stylesheet">
 <link href="${pageContext.request.contextPath}/css/summernote.css" rel="stylesheet">
    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->

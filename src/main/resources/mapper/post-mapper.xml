@@ -170,7 +170,7 @@
 	<select id="selectPostComments" parameterType="postVO" resultType="postVO">
 		SELECT A.POST_ID,
 		       A.COMMENT_ID,
-			   A.CONTENT,
+			   REPLACE(A.CONTENT, '\n', '<![CDATA[<br />]]>') CONTENT,
 			  A.WRITER_ID,
 			  B.PHOTO PHOTO,
 			  CONCAT(fnGetCodeNm(B.GRADE)," ",B.NAME) NAME,

@@ -100,6 +100,10 @@
 		width:105px;
 	    font-size: 13px;
 	}
+	.profile-media-left >img{
+		top: 20px !important;
+    	position: absolute;
+	}
 </style>
 <script type="text/javascript">
 	$(document).ready(function(){
@@ -292,27 +296,27 @@
 <div class="row">
 	<section id="profile" class="col-md-6">
 		<div class="profile-wrap media well">
-			<div class="profile-img-wrap pull-left">
+			<div class="profile-img-wrap profile-media-left">
 				<img src="${pageContext.request.contextPath }/image.do?id=${user.photo}" alt="" class="circular-square profile-img"/>
 			</div>
-			<div class="profile-body media-body">
+			<div class="profile-body media-body profile-media">
 				<ul class="profile-list">
 					<li class="profile-list-item">
 						<h4 class="profile-name">${user.gradeNm } ${user.name }</h4>
 					</li>
 					<li class="profile-list-item">
 						<span class="profile-email">
-							<label for=""><i class="fa fa-envelope"></i>이메일</label>${user.email }
+							<i class="fa fa-envelope"></i><label class="hidden-xs" for="">이메일</label>${user.email }
 						</span>
 					</li>
 					<li class="profile-list-item">
 						<span class="profile-department">
-							<label for=""><i class="fa fa-briefcase"></i>소속</label>${user.department }
+							<i class="fa fa-briefcase"></i><label class="hidden-xs" for="">소속</label>${user.department }
 						</span>
 					</li>
 					<li class="profile-list-item">
 						<span class="profile-favorite">
-							<label for=""><i class="fa fa-star"></i>관심분야</label>
+							<i class="fa fa-star"></i><label class="hidden-xs" for="">관심분야</label>
 							<c:forEach items="${userTagList }" var="tagItem" varStatus="status">
 								<a href="#" class="tag-sm"><i class="fa fa-hashtag"></i>${tagItem }</a>
 								<c:if test="${ !status.last }">,</c:if>

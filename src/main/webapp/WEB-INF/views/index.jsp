@@ -131,7 +131,7 @@
 					<div class="item active">
 					<img class="second-slide" src="${pageContext.request.contextPath }/img/banner1.jpg" alt="Second slide">
 					  <div class="container">
-						<div class="carousel-caption">
+						<div class="carousel-caption hidden-xs">
 						  <h1 class="carousel-heading">국방분야 - 국가자격검정 <br />응시자격 및 시험일정</h1>
 						  	* 헬기정비사 <br /> 육군 헬기정비 특기병과정, 부사관(초, 중, 고급반) 과정이수 후 <br />1년 이상 실무경력이 있는자<br/>
 						  	* 심해잠수사 <br /> 해군 해난구조 과정(장교, 부사관, 병) 과정 이수 후 <br />  1년 이상 실무경력<br />
@@ -140,13 +140,20 @@
 						  
 						  <span>2016.07.04 ~ 2017.07.22</span>
 						  </p>
-						  </div>
+					     </div>
+					     <div class="carousel-caption visible-xs">
+					     	<h1 class="carousel-heading">국방분야 - 국가자격검정 <br />응시자격 및 시험일정</h1>
+					     	<p>
+						     	이 정보는 모바일에서 지원하지 않습니다.<br/>
+						     	자세한 정보는 PC나 Tablet를 통해서 확인하세요
+					     	</p>
+					     </div>
 					  </div>
 					</div>
 					<div class="item">
 					  <img class="second-slide"  src="${pageContext.request.contextPath }/img/banner2.jpg" alt="Second slide">
 					  <div class="container">
-						<div class="carousel-caption">
+						<div class="carousel-caption hidden-xs">
 						  <h1 class="carousel-heading">2017년 국가기술자격검정 <br/> 기사,산업기사 시험일정</h1>
 						  <table class="table table-bordered text-center" id="elist-table">
 						  	<thead>
@@ -170,6 +177,13 @@
 						  	</tbody>
 						  </table>
 						</div>
+						<div class="carousel-caption visible-xs">
+					     	<h1 class="carousel-heading">2017년 국가기술자격검정 <br/> 기사,산업기사 시험일정</h1>
+					     	<p>
+						     	이 정보는 모바일에서 지원하지 않습니다.<br/>
+						     	자세한 정보는 PC나 Tablet를 통해서 확인하세요
+					     	</p>
+					     </div>
 					  </div>
 					</div>
 				  </div>

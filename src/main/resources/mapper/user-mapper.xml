@@ -246,7 +246,7 @@
     <select id="selectUserCommentList" parameterType="userCommentVO" resultType="userCommentVO">
     	SELECT A.COMMENT_ID,
     		   A.USER_ID,
-    		   A.CONTENT,
+    		   REPLACE(A.CONTENT, '\n', '<![CDATA[<br />]]>') CONTENT,
     		   A.WRITER_ID,
     		   B.PHOTO WRITER_PHOTO,
     		   CONCAT(fnGetCodeNm(B.GRADE), ' ', B.NAME ) WRITER_NAME,

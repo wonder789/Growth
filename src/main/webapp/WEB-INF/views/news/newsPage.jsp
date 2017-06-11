@@ -11,6 +11,9 @@
     margin-left: 36px;
     padding: 22px;
 }
+.media-body{
+	padding-left:100px;
+}
 
 </style>
 <script>
