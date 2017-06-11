@@ -52,11 +52,7 @@
 		margin-top:15px;
 		text-align:right;
 	}
-	.comment-list{
-	    list-style: none;
-	    padding-left:0;
-	    
-	}
+	
 	.comment-list-item{
 		margin-top:20px;
 		padding-top:10px;
