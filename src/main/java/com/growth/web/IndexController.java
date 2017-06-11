@@ -33,7 +33,7 @@ public class IndexController {
     @RequestMapping
     public String index(ModelMap model) throws Exception {
     	model.addAttribute("userList", userService.selectUserList(null));
-    	model.addAttribute("contestList", contestService.getContestList());
+//    	model.addAttribute("contestList", contestService.getContestList());
     	model.addAttribute("EList",openApiService.getEList());
         return "index";
     }
