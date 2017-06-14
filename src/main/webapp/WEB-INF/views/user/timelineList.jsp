@@ -12,9 +12,11 @@
 			  <div class="circ"></div>
 			  <div class="time">${timelineItem.completeDate }</div>
 			  <div class="events">
-				  <div class="pull-left">
+			  <c:if test="${timelineItem.thumbnail != -1 }">
+			  	<div class="pull-left">
 					  <img class="events-object img-rounded" src="${pageContext.request.contextPath }/image.do?id=${timelineItem.thumbnail}">
 				  </div>
+			  </c:if>
 				  <div class="events-body">
 					  <h4 class="events-heading">${timelineItem.title }</h4>
 					  <p>${timelineItem.content }</p>
