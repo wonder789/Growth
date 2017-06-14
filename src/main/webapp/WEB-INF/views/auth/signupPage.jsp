@@ -115,13 +115,15 @@
 			});
 		}
 		
-		
-		if( department.value.trim() == "" || department.value.length == 0 ){
-			invalid.push({
-				element : "department",
-				message : "소속은 필수 입력값입니다."
-			});
-		} 
+		if( type.value != "UT0101") {
+			if( department.value.trim() == "" || department.value.length == 0 ){
+				invalid.push({
+					element : "department",
+					message : "소속은 필수 입력값입니다."
+				});
+			}	
+		}
+		 
 		
 		if( name.value.trim() == "" || name.value.length == 0 ){
 			invalid.push({

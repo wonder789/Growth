@@ -352,18 +352,23 @@
 		</div>
 		</section>
 		<div class="user-comment-wrap col-md-6">
-			<form class="user-comment-form" onsubmit="return commentWrite(event);">
-				<h4 class="user-comment-header">
-					<i class="fa fa-comments"></i>${user.name }님 에게 코멘트 남기기
-				</h4>
-				<div class="user-comment-body">
-					<textarea name="content" id="user-comment" class="form-control" rows="5" placeholder="칭찬, 감사, 질문을 남겨보세요"></textarea>
-				</div>
-				<div class="user-comment-footer text-right">
-					<button type="submit" class="btn btn-danger" id="btn-comment-write"><i class="fa fa-save"></i>작성완료</button>
-				</div>
-				<input type="hidden" name="userId" value="${user.email }"/>
-			</form>
+			<sec:authorize access="isAuthenticated()"> 
+				<form class="user-comment-form" onsubmit="return commentWrite(event);">
+					<h4 class="user-comment-header">
+						<i class="fa fa-comments"></i>${user.name }님 에게 코멘트 남기기
+					</h4>
+					<div class="user-comment-body">
+						<textarea name="content" id="user-comment" class="form-control" rows="5" placeholder="칭찬, 감사, 질문을 남겨보세요"></textarea>
+					</div>
+					<div class="user-comment-footer text-right">
+						<button type="submit" class="btn btn-danger" id="btn-comment-write"><i class="fa fa-save"></i>작성완료</button>
+					</div>
+					<input type="hidden" name="userId" value="${user.email }"/>
+				</form>
+			</sec:authorize>
+			<sec:authorize access="!isAuthenticated()">
+				 <span class="help-block">※ 로그인하시면 코멘트를 남기실 수 있습니다.</span>
+			</sec:authorize>
 			<div class="user-comment-list">
 			
 			</div>
