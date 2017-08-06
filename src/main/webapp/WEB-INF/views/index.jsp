@@ -150,7 +150,7 @@
 					     </div>
 					  </div>
 					</div>
-					<div class="item">
+					<%-- <div class="item">
 					  <img class="second-slide"  src="${pageContext.request.contextPath }/img/banner2.jpg" alt="Second slide">
 					  <div class="container">
 						<div class="carousel-caption hidden-xs">
@@ -185,7 +185,7 @@
 					     	</p>
 					     </div>
 					  </div>
-					</div>
+					</div> --%>
 				  </div>
 				 <a class="left carousel-control" data-slide="prev" href="#main-image-slide">
 					<i class="fa fa-angle-left" aria-hidden="true"></i>
