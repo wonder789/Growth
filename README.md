@@ -1,2 +1,1 @@
-# Growth
-군인 자기계발 성장 플랫폼
+![]({{site.baseurl}}//%EA%B7%B8%EB%A6%BC1.png)
